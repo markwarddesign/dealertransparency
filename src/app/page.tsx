@@ -39,9 +39,17 @@ export default function Home() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-navy mb-4">1. M.I.L.E.S.™ (Monthly Investment & Lifetime Expense Savings)</h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 mb-4">
                   M.I.L.E.S. is your next-gen tool for creating customized offers that help customers save money, visualize their monthly investments, and maximize their lifetime expense savings. Empower your team to guide customers into smarter decisions—including trading in their vehicles for the best value. This program integrates marketing, sales strategies, and custom workflows to boost profitability while enhancing the customer experience.
                 </p>
+                <a
+                  href="https://miles.dealertransparency.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-6 py-3 bg-electric-blue text-white font-semibold rounded-lg hover:bg-navy transition duration-300"
+                >
+                  Try M.I.L.E.S. →
+                </a>
               </div>
             </div>
 
