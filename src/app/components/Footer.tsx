@@ -11,7 +11,7 @@ export default function Footer() {
               <Logo className="h-8 w-auto" />
               <span className="text-xl font-bold">Dealer Transparency</span>
             </Link>
-            <p className="text-sm text-gray-400 mt-2">© 2024 Dealer Transparency. All rights reserved.</p>
+            <p className="text-sm text-gray-400 mt-2">© 2026 Dealer Transparency. All rights reserved.</p>
           </div>
           <div className="flex space-x-6">
             <Link href="#portfolio" className="hover:text-electric-blue">Solutions</Link>
