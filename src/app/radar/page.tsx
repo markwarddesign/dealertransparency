@@ -213,7 +213,7 @@ export default function RadarPage() {
       <section id="what-it-does" className="px-6 py-16 bg-black">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            What It Does (in 10 seconds)
+            What It Does
           </h2>
           
           <p className="text-xl text-gray-300 leading-relaxed mb-6">
