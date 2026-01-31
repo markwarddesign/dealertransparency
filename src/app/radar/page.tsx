@@ -9,16 +9,46 @@ export default function RadarPage() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center">
-            <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" className="h-12 w-auto">
-              <circle cx="100" cy="60" r="50" fill="none" stroke="#ed2024" strokeWidth="2.5" opacity="0.3"/>
-              <circle cx="100" cy="60" r="35" fill="none" stroke="#ed2024" strokeWidth="2.5" opacity="0.5"/>
-              <circle cx="100" cy="60" r="20" fill="none" stroke="#ed2024" strokeWidth="2.5" opacity="0.7"/>
-              <path d="M100 60 L140 30" stroke="#ed2024" strokeWidth="4" strokeLinecap="round"/>
-              <circle cx="125" cy="41" r="6" fill="#10B981" />
-              <circle cx="80" cy="35" r="5" fill="#F59E0B" />
-              <circle cx="70" cy="80" r="7" fill="#ed2024" />
+            <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" className="h-10 w-10">
+              <defs>
+                <filter id="headerGlow">
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <radialGradient id="headerCenterGlow">
+                  <stop offset="0%" stopColor="#ed2024" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#ed2024" stopOpacity="0" />
+                </radialGradient>
+              </defs>
+              
+              {/* Background circle for contrast */}
+              <circle cx="60" cy="60" r="55" fill="#1a0000" opacity="0.4"/>
+              
+              {/* Concentric circles - thicker and brighter */}
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#ed2024" strokeWidth="2.5" opacity="0.6" filter="url(#headerGlow)"/>
+              <circle cx="60" cy="60" r="35" fill="none" stroke="#ed2024" strokeWidth="2.5" opacity="0.7" filter="url(#headerGlow)"/>
+              <circle cx="60" cy="60" r="20" fill="none" stroke="#ed2024" strokeWidth="2.5" opacity="0.8" filter="url(#headerGlow)"/>
+              
+              {/* Center point - brighter */}
+              <circle cx="60" cy="60" r="10" fill="url(#headerCenterGlow)"/>
+              <circle cx="60" cy="60" r="4" fill="#ed2024" opacity="1"/>
+              
+              {/* Grid lines - thicker */}
+              <line x1="10" y1="60" x2="110" y2="60" stroke="#ed2024" strokeWidth="1.5" opacity="0.5" filter="url(#headerGlow)"/>
+              <line x1="60" y1="10" x2="60" y2="110" stroke="#ed2024" strokeWidth="1.5" opacity="0.5" filter="url(#headerGlow)"/>
+              
+              {/* Sweep line - thicker and brighter */}
+              <line x1="60" y1="60" x2="60" y2="15" stroke="#ed2024" strokeWidth="3" strokeLinecap="round" filter="url(#headerGlow)" opacity="1"/>
+              
+              {/* Tracking dots - larger and brighter */}
+              <circle cx="85" cy="35" r="4" fill="#10B981" filter="url(#headerGlow)" opacity="1"/>
+              <circle cx="40" cy="30" r="3.5" fill="#F59E0B" filter="url(#headerGlow)" opacity="1"/>
+              <circle cx="35" cy="80" r="4" fill="#ed2024" filter="url(#headerGlow)" opacity="1"/>
             </svg>
-            <span className="text-2xl font-black tracking-wider uppercase" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '0.15em', color: '#ed2024' }}>RADAR</span>
+            <span className="text-2xl font-black tracking-wider uppercase ml-2" style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '0.15em', color: '#ed2024' }}>RADAR</span>
           </div>
           <a
             href="mailto:ward.matt@me.com?subject=RADAR%20-%20quick%20conversation"
@@ -34,27 +64,96 @@ export default function RadarPage() {
       {/* HERO */}
       <section className="relative px-6 pt-32 pb-20 md:pt-48 md:pb-32 min-h-[75vh] flex items-center overflow-hidden">
         {/* Animated Radar Background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30">
-          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" className="w-full max-w-4xl">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" className="w-full h-full max-w-6xl">
             <defs>
+              {/* Radar sweep gradient with glow */}
               <linearGradient id="radarSweep" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="#ed2024" stopOpacity="0" />
-                <stop offset="100%" stopColor="#ed2024" stopOpacity="0.4" />
+                <stop offset="40%" stopColor="#ed2024" stopOpacity="0.1" />
+                <stop offset="100%" stopColor="#ed2024" stopOpacity="0.5" />
               </linearGradient>
+              
+              {/* Glow filter */}
+              <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              
+              {/* Radial gradient for center */}
+              <radialGradient id="centerGlow">
+                <stop offset="0%" stopColor="#ed2024" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#ed2024" stopOpacity="0" />
+              </radialGradient>
             </defs>
-            <circle cx="200" cy="200" r="180" fill="none" stroke="#ed2024" strokeWidth="1" opacity="0.2"/>
-            <circle cx="200" cy="200" r="130" fill="none" stroke="#ed2024" strokeWidth="1" opacity="0.3"/>
-            <circle cx="200" cy="200" r="80" fill="none" stroke="#ed2024" strokeWidth="1" opacity="0.4"/>
-            <circle cx="200" cy="200" r="30" fill="none" stroke="#ed2024" strokeWidth="1" opacity="0.5"/>
-            <g className="animate-[spin_4s_linear_infinite] origin-center" style={{ transformOrigin: '200px 200px' }}>
-              <path d="M200 200 L200 20" stroke="url(#radarSweep)" strokeWidth="3" strokeLinecap="round" opacity="0.6"/>
-              <path d="M200 200 L200 20" stroke="#ed2024" strokeWidth="2" strokeLinecap="round"/>
+            
+            {/* Grid lines - horizontal */}
+            <line x1="0" y1="150" x2="600" y2="150" stroke="#ed2024" strokeWidth="0.5" opacity="0.1"/>
+            <line x1="0" y1="300" x2="600" y2="300" stroke="#ed2024" strokeWidth="0.5" opacity="0.15"/>
+            <line x1="0" y1="450" x2="600" y2="450" stroke="#ed2024" strokeWidth="0.5" opacity="0.1"/>
+            
+            {/* Grid lines - vertical */}
+            <line x1="150" y1="0" x2="150" y2="600" stroke="#ed2024" strokeWidth="0.5" opacity="0.1"/>
+            <line x1="300" y1="0" x2="300" y2="600" stroke="#ed2024" strokeWidth="0.5" opacity="0.15"/>
+            <line x1="450" y1="0" x2="450" y2="600" stroke="#ed2024" strokeWidth="0.5" opacity="0.1"/>
+            
+            {/* Radar circles with glow */}
+            <circle cx="300" cy="300" r="250" fill="none" stroke="#ed2024" strokeWidth="1.5" opacity="0.2" filter="url(#glow)"/>
+            <circle cx="300" cy="300" r="180" fill="none" stroke="#ed2024" strokeWidth="1.5" opacity="0.25" filter="url(#glow)"/>
+            <circle cx="300" cy="300" r="110" fill="none" stroke="#ed2024" strokeWidth="1.5" opacity="0.3" filter="url(#glow)"/>
+            <circle cx="300" cy="300" r="40" fill="none" stroke="#ed2024" strokeWidth="2" opacity="0.4" filter="url(#glow)"/>
+            
+            {/* Center glow pulse */}
+            <circle cx="300" cy="300" r="20" fill="url(#centerGlow)" className="animate-pulse" style={{ animationDuration: '2s' }}/>
+            <circle cx="300" cy="300" r="5" fill="#ed2024" opacity="0.8"/>
+            
+            {/* Radar sweep - animated */}
+            <g className="animate-[spin_6s_linear_infinite]" style={{ transformOrigin: '300px 300px' }}>
+              {/* Main sweep beam */}
+              <path 
+                d="M 300 300 L 300 50 A 250 250 0 0 1 477 170 Z" 
+                fill="url(#radarSweep)" 
+                opacity="0.4"
+              />
+              {/* Sweep line with glow */}
+              <line x1="300" y1="300" x2="300" y2="50" stroke="#ed2024" strokeWidth="2" strokeLinecap="round" filter="url(#glow)" opacity="0.8"/>
             </g>
-            <circle cx="280" cy="120" r="6" fill="#10B981" className="animate-pulse" style={{ animationDuration: '2s' }} />
-            <circle cx="140" cy="110" r="5" fill="#F59E0B" className="animate-pulse" style={{ animationDuration: '3s', animationDelay: '0.5s' }} />
-            <circle cx="120" cy="260" r="7" fill="#ed2024" className="animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '1s' }} />
-            <circle cx="300" cy="280" r="4" fill="#8B5CF6" className="animate-pulse" style={{ animationDuration: '3.5s', animationDelay: '1.5s' }} />
-            <circle cx="220" cy="320" r="5" fill="#06B6D4" className="animate-pulse" style={{ animationDuration: '2.8s', animationDelay: '0.8s' }} />
+            
+            {/* Animated dots with trails */}
+            <g className="animate-pulse" style={{ animationDuration: '3s' }}>
+              <circle cx="420" cy="180" r="4" fill="#10B981" opacity="0.3"/>
+              <circle cx="420" cy="180" r="6" fill="#10B981" filter="url(#glow)"/>
+            </g>
+            
+            <g className="animate-pulse" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}>
+              <circle cx="180" cy="160" r="3" fill="#F59E0B" opacity="0.3"/>
+              <circle cx="180" cy="160" r="5" fill="#F59E0B" filter="url(#glow)"/>
+            </g>
+            
+            <g className="animate-pulse" style={{ animationDuration: '3.5s', animationDelay: '1s' }}>
+              <circle cx="150" cy="400" r="5" fill="#ed2024" opacity="0.3"/>
+              <circle cx="150" cy="400" r="7" fill="#ed2024" filter="url(#glow)"/>
+            </g>
+            
+            <g className="animate-pulse" style={{ animationDuration: '2.8s', animationDelay: '1.5s' }}>
+              <circle cx="450" cy="420" r="3" fill="#8B5CF6" opacity="0.3"/>
+              <circle cx="450" cy="420" r="5" fill="#8B5CF6" filter="url(#glow)"/>
+            </g>
+            
+            <g className="animate-pulse" style={{ animationDuration: '3.2s', animationDelay: '0.8s' }}>
+              <circle cx="330" cy="480" r="4" fill="#06B6D4" opacity="0.3"/>
+              <circle cx="330" cy="480" r="6" fill="#06B6D4" filter="url(#glow)"/>
+            </g>
+            
+            {/* Scanlines effect */}
+            <g opacity="0.05">
+              {Array.from({ length: 30 }).map((_, i) => (
+                <line key={i} x1="0" y1={i * 20} x2="600" y2={i * 20} stroke="#ed2024" strokeWidth="1"/>
+              ))}
+            </g>
           </svg>
         </div>
         

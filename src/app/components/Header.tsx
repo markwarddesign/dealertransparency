@@ -14,9 +14,21 @@ export default function Header() {
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center space-x-2" onClick={closeMenu}>
-          <Logo className="h-8 w-auto text-navy" />
-          <span className="text-xl font-bold text-navy">Dealer Transparency</span>
+        <Link href="/" className="flex items-center space-x-3" onClick={closeMenu}>
+          <svg width="44" height="44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{stopColor: '#3B82F6', stopOpacity: 1}} />
+                <stop offset="100%" style={{stopColor: '#10B981', stopOpacity: 1}} />
+              </linearGradient>
+            </defs>
+            <path d="M20 50 L50 20 L80 50 L50 80 Z" fill="url(#iconGrad)" opacity="0.9"/>
+            <circle cx="50" cy="50" r="12" fill="white"/>
+            <path d="M35 50 L50 35 L65 50 L50 65 Z" fill="none" stroke="white" strokeWidth="3" strokeLinejoin="round"/>
+          </svg>
+          <span className="text-2xl uppercase" style={{letterSpacing: '-0.02em', fontFamily: 'Inter, system-ui, -apple-system, sans-serif'}}>
+            <span className="font-light text-navy">Dealer</span><span className="font-bold text-electric-blue">Transparency</span>
+          </span>
         </Link>
         <div className="hidden md:flex items-center space-x-6">
           <Link href="#portfolio" className="text-slate-gray hover:text-electric-blue transition duration-300">Solutions</Link>
