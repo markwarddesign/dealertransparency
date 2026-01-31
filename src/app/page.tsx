@@ -1,9 +1,12 @@
 import Image from 'next/image'; // Optional, but recommended for images
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    // The main wrapper <div> is no longer needed as styles are on <body>
-    <main>
+    <>
+      <Header />
+      <main>
       {/* Hero Section */}
       <section className="bg-gray-50">
         <div className="container mx-auto px-6 py-20 lg:py-24 text-center">
@@ -60,9 +63,15 @@ export default function Home() {
               </div>
               <div className="lg:order-1">
                 <h3 className="text-2xl font-bold text-navy mb-4">2. R.A.D.A.R.™ (Retention & Advertising Drip for Automated ROI)</h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 mb-4">
                   R.A.D.A.R. is an automated messaging engine that works within your existing CRM to continue engaging customers long after the salesperson stops. By sending consistent, personalized messages over an extended period, R.A.D.A.R. nurtures leads that might otherwise be lost after 30–60 days, helping you maximize advertising dollars and drive higher ROI. Integrated with PipelinePro and TemplateWorks, it ensures long-term engagement, retention, and measurable results for every customer.
                 </p>
+                <a
+                  href="/radar"
+                  className="inline-block px-6 py-3 bg-electric-blue text-white font-semibold rounded-lg hover:bg-navy transition duration-300"
+                >
+                  Learn More About RADAR →
+                </a>
               </div>
             </div>
 
@@ -161,5 +170,7 @@ export default function Home() {
         </div>
       </section>
     </main>
+    <Footer />
+    </>
   );
 }

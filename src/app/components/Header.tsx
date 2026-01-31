@@ -21,6 +21,7 @@ export default function Header() {
         <div className="hidden md:flex items-center space-x-6">
           <Link href="#portfolio" className="text-slate-gray hover:text-electric-blue transition duration-300">Solutions</Link>
           <Link href="#results" className="text-slate-gray hover:text-electric-blue transition duration-300">Results</Link>
+          <Link href="/radar" className="text-slate-gray hover:text-electric-blue transition duration-300">RADAR</Link>
           <Link href="#contact" className="px-5 py-2 bg-electric-blue text-white rounded-md hover:bg-navy transition duration-300">Request a Health Report</Link>
         </div>
         <div className="md:hidden">
@@ -44,6 +45,7 @@ export default function Header() {
       >
         <Link href="#portfolio" className="block py-2 text-slate-gray hover:text-electric-blue" onClick={closeMenu}>Solutions</Link>
         <Link href="#results" className="block py-2 text-slate-gray hover:text-electric-blue" onClick={closeMenu}>Results</Link>
+        <Link href="/radar" className="block py-2 text-slate-gray hover:text-electric-blue" onClick={closeMenu}>RADAR</Link>
         <Link href="#contact" className="block mt-2 px-5 py-2 bg-electric-blue text-white text-center rounded-md hover:bg-navy" onClick={closeMenu}>Request a Health Report</Link>
       </div>
     </header>
