@@ -178,7 +178,7 @@ export default function RadarPage() {
               Captures the growing pool of customers who fall into cold or lost status every month — turning long-term silence into long-term opportunity.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            {/* <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <a
                 href="mailto:ward.matt@me.com?subject=RADAR%20-%20quick%20conversation"
                 className="px-8 py-3 rounded-lg font-medium transition-colors shadow-md text-lg"
@@ -188,7 +188,7 @@ export default function RadarPage() {
               >
                 Let's talk
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
