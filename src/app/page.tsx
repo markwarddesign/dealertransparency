@@ -46,17 +46,10 @@ export default function Home() {
             </a>
           </div>
         </div>
-        
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
       </section>
 
       {/* Solutions Section */}
-      <section id="solutions" className="relative py-32 px-6 bg-black">
+      <section id="solutions" className="relative py-16 px-6 bg-black">
         <div className="container mx-auto max-w-7xl">
           <div className="text-center mb-20">
             <h2 className="text-5xl lg:text-6xl font-bold mb-6">Powerful Solutions</h2>
