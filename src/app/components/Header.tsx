@@ -12,7 +12,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className="bg-black/95 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
       <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-3" onClick={closeMenu}>
           <svg width="44" height="44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -27,19 +27,19 @@ export default function Header() {
             <path d="M35 50 L50 35 L65 50 L50 65 Z" fill="none" stroke="white" strokeWidth="3" strokeLinejoin="round"/>
           </svg>
           <span className="text-2xl uppercase" style={{letterSpacing: '-0.02em', fontFamily: 'Inter, system-ui, -apple-system, sans-serif'}}>
-            <span className="font-light text-navy">Dealer</span><span className="font-bold text-electric-blue">Transparency</span>
+            <span className="font-light text-gray-300">Dealer</span><span className="font-bold text-electric-blue">Transparency</span>
           </span>
         </Link>
         <div className="hidden md:flex items-center space-x-6">
-          <Link href="#portfolio" className="text-slate-gray hover:text-electric-blue transition duration-300">Solutions</Link>
-          <Link href="#results" className="text-slate-gray hover:text-electric-blue transition duration-300">Results</Link>
-          <Link href="/radar" className="text-slate-gray hover:text-electric-blue transition duration-300">RADAR</Link>
-          <Link href="#contact" className="px-5 py-2 bg-electric-blue text-white rounded-md hover:bg-navy transition duration-300">Request a Health Report</Link>
+          <Link href="#solutions" className="text-gray-300 hover:text-electric-blue transition duration-300">Solutions</Link>
+          <Link href="#results" className="text-gray-300 hover:text-electric-blue transition duration-300">Results</Link>
+          <Link href="/radar" className="text-gray-300 hover:text-electric-blue transition duration-300">RADAR</Link>
+          <Link href="#contact" className="px-5 py-2 bg-electric-blue text-white rounded-xl hover:bg-electric-blue/90 transition-all duration-300 hover:scale-105">Request a Health Report</Link>
         </div>
         <div className="md:hidden">
           <button
             id="mobile-menu-button"
-            className="text-navy focus:outline-none"
+            className="text-white focus:outline-none"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
             aria-expanded={isMobileMenuOpen}
@@ -53,12 +53,12 @@ export default function Header() {
       {/* Mobile Menu */}
       <div
         id="mobile-menu"
-        className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden px-6 pt-2 pb-4`}
+        className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden px-6 pt-2 pb-4 bg-black/95 border-t border-gray-800`}
       >
-        <Link href="#portfolio" className="block py-2 text-slate-gray hover:text-electric-blue" onClick={closeMenu}>Solutions</Link>
-        <Link href="#results" className="block py-2 text-slate-gray hover:text-electric-blue" onClick={closeMenu}>Results</Link>
-        <Link href="/radar" className="block py-2 text-slate-gray hover:text-electric-blue" onClick={closeMenu}>RADAR</Link>
-        <Link href="#contact" className="block mt-2 px-5 py-2 bg-electric-blue text-white text-center rounded-md hover:bg-navy" onClick={closeMenu}>Request a Health Report</Link>
+        <Link href="#solutions" className="block py-2 text-gray-300 hover:text-electric-blue" onClick={closeMenu}>Solutions</Link>
+        <Link href="#results" className="block py-2 text-gray-300 hover:text-electric-blue" onClick={closeMenu}>Results</Link>
+        <Link href="/radar" className="block py-2 text-gray-300 hover:text-electric-blue" onClick={closeMenu}>RADAR</Link>
+        <Link href="#contact" className="block mt-2 px-5 py-2 bg-electric-blue text-white text-center rounded-xl hover:bg-electric-blue/90" onClick={closeMenu}>Request a Health Report</Link>
       </div>
     </header>
   );

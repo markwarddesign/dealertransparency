@@ -166,11 +166,11 @@ export default function RadarPage() {
         
         <div className="max-w-5xl mx-auto w-full relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl text-gray-300 font-light leading-relaxed">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-bold leading-relaxed">
               A behavioral engagement layer inside the CRM.
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
               It quietly works the mid and long-term opportunities that salespeople and AI tend to miss — without adding noise, dashboards, or complexity.
             </p>
             
