@@ -171,7 +171,7 @@ export default function RadarPage() {
             </h1>
             
             <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto">
-              It quietly works the mid- and long-term opportunities that salespeople and AI tend to miss — without adding noise, dashboards, or complexity.
+              It quietly works the mid and long-term opportunities that salespeople and AI tend to miss — without adding noise, dashboards, or complexity.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -269,7 +269,7 @@ export default function RadarPage() {
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
-                  <span>Uses time + non-response as signals</span>
+                  <span>Uses timing and silence as signals</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
