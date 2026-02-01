@@ -285,14 +285,14 @@ export default function RadarPage() {
             </div>
           </div>
 
-          {/* WHERE R.A.D.A.R. TAKES OVER */}
+          {/* WHERE RADAR TAKES OVER */}
           <div className="border-b border-gray-800">
             <button
               onClick={() => toggleSection('how')}
               className="w-full flex items-center justify-between py-6 text-left group"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-white group-hover:text-red-500 transition-colors">
-                Where R.A.D.A.R. Takes Over
+                Where RADAR Takes Over
               </h2>
               <span className="text-3xl text-gray-400 group-hover:text-red-500 transition-colors">
                 {openSection === 'how' ? '−' : '+'}
@@ -301,7 +301,7 @@ export default function RadarPage() {
             <div className={`overflow-hidden transition-all duration-300 ${openSection === 'how' ? 'max-h-[600px] pb-6' : 'max-h-0'}`}>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
-                  R.A.D.A.R. activates exactly where salespeople stop, where AI finishes, and where the CRM is about to close the opportunity. It fills the long-term gap no existing system covers.
+                  RADAR activates exactly where salespeople stop, where AI finishes, and where the CRM is about to close the opportunity. It fills the long-term gap no existing system covers.
                 </p>
                 <ul className="space-y-3 pt-2">
                   <li className="flex items-start">
@@ -326,20 +326,20 @@ export default function RadarPage() {
                   </li>
                 </ul>
                 <p className="font-medium text-white text-xl pt-2">
-                  R.A.D.A.R. doesn't push — it stays present.
+                  RADAR doesn't push — it stays present.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* HOW R.A.D.A.R. WORKS BEHIND THE SCENES */}
+          {/* HOW RADAR WORKS BEHIND THE SCENES */}
           <div className="border-b border-gray-800">
             <button
               onClick={() => toggleSection('framework')}
               className="w-full flex items-center justify-between py-6 text-left group"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-white group-hover:text-red-500 transition-colors">
-                How R.A.D.A.R. Works Behind the Scenes
+                How RADAR Works Behind the Scenes
               </h2>
               <span className="text-3xl text-gray-400 group-hover:text-red-500 transition-colors">
                 {openSection === 'framework' ? '−' : '+'}
@@ -348,7 +348,7 @@ export default function RadarPage() {
             <div className={`overflow-hidden transition-all duration-300 ${openSection === 'framework' ? 'max-h-[600px] pb-6' : 'max-h-0'}`}>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
-                  R.A.D.A.R. reads customer behavior inside your CRM and engages using simple, human-sounding messages at the moments when traditional follow-up disappears.
+                  RADAR reads customer behavior inside your CRM and engages using simple, human-sounding messages at the moments when traditional follow-up disappears.
                 </p>
                 <ul className="space-y-3 pt-2">
                   <li className="flex items-start">
@@ -373,7 +373,7 @@ export default function RadarPage() {
                   </li>
                 </ul>
                 <p className="font-medium text-white text-xl pt-2">
-                  The longer R.A.D.A.R. runs, the stronger it becomes.
+                  The longer RADAR runs, the stronger it becomes.
                 </p>
               </div>
             </div>
@@ -395,7 +395,7 @@ export default function RadarPage() {
             <div className={`overflow-hidden transition-all duration-300 ${openSection === 'impact' ? 'max-h-[600px] pb-6' : 'max-h-0'}`}>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
-                  R.A.D.A.R. re-engages customers who still intended to buy but were pushed into cold or lost status long before their buying cycle ended.
+                  RADAR re-engages customers who still intended to buy but were pushed into cold or lost status long before their buying cycle ended.
                 </p>
                 <ul className="space-y-3 pt-2">
                   <li className="flex items-start">
@@ -420,7 +420,7 @@ export default function RadarPage() {
                   </li>
                 </ul>
                 <p className="font-medium text-white text-xl pt-2">
-                  R.A.D.A.R. turns abandoned revenue into recovered opportunity.
+                  RADAR turns abandoned revenue into recovered opportunity.
                 </p>
               </div>
             </div>
