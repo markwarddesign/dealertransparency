@@ -167,11 +167,15 @@ export default function RadarPage() {
         <div className="max-w-5xl mx-auto w-full relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-bold leading-relaxed">
-              A behavioral engagement layer inside the CRM.
+              Behavioral engagement layer inside your CRM.
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-              It quietly works the mid and long-term opportunities that salespeople and AI tend to miss — without adding noise, dashboards, or complexity.
+              Quietly works mid and long-term customers who go silent — recovering abandoned revenue.
+            </p>
+            
+            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+              Captures the growing pool of customers who fall into cold or lost status every month — turning long-term silence into long-term opportunity.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -199,142 +203,233 @@ export default function RadarPage() {
       <section className="px-6 py-16 bg-black">
         <div className="max-w-4xl mx-auto space-y-4">
           
-          {/* WHY IT EXISTS */}
+          {/* THE PROBLEM NO ONE SEES */}
           <div className="border-b border-gray-800">
             <button
               onClick={() => toggleSection('why')}
               className="w-full flex items-center justify-between py-6 text-left group"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-white group-hover:text-red-500 transition-colors">
-                Why It Exists
+                The Problem No One Sees
               </h2>
               <span className="text-3xl text-gray-400 group-hover:text-red-500 transition-colors">
                 {openSection === 'why' ? '−' : '+'}
               </span>
             </button>
-            <div className={`overflow-hidden transition-all duration-300 ${openSection === 'why' ? 'max-h-96 pb-6' : 'max-h-0'}`}>
-              <div className="space-y-4 text-lg text-gray-400 leading-relaxed">
-                <p>Most systems focus on fast: first hour, first day, first week.</p>
-                <p>But buyers don't follow a script.</p>
-                <p className="font-medium text-white text-xl pt-2">
-                  When timing isn't right today, RADAR stays present — silently — until it is.
-                </p>
+            <div className={`overflow-hidden transition-all duration-300 ${openSection === 'why' ? 'max-h-[600px] pb-6' : 'max-h-0'}`}>
+              <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
+                <p>Most customers don't go silent because they already purchased — they go silent because follow-up ends too early. Without a process change, most leads end up in cold or lost status within just 14–30 days. The CRM closes them long before many of these customers are actually out of the market.</p>
+                <ul className="space-y-3 pt-2">
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Follow-up typically stops after just a few days of no response</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>CRM automation moves leads to cold or lost at preset inactivity thresholds</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>AI workflows end early because they focus on appointment-first engagement</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Customers buy on their own timeline — not the dealership's</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>The cold/lost pool grows larger every single month</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
 
-          {/* WHAT IT DOES */}
+          {/* WHY TRADITIONAL FOLLOW-UP FAILS */}
           <div className="border-b border-gray-800">
             <button
               onClick={() => toggleSection('what')}
               className="w-full flex items-center justify-between py-6 text-left group"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-white group-hover:text-red-500 transition-colors">
-                What It Does
+                Why Traditional Follow-Up Fails
               </h2>
               <span className="text-3xl text-gray-400 group-hover:text-red-500 transition-colors">
                 {openSection === 'what' ? '−' : '+'}
               </span>
             </button>
-            <div className={`overflow-hidden transition-all duration-300 ${openSection === 'what' ? 'max-h-96 pb-6' : 'max-h-0'}`}>
+            <div className={`overflow-hidden transition-all duration-300 ${openSection === 'what' ? 'max-h-[600px] pb-6' : 'max-h-0'}`}>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
-                  RADAR grows over time and picks up thousands of long-term opportunities that normally fall through the cracks when processes end, leads get marked lost, or humans/AI stop following up.
+                  Salespeople, AI tools, and CRM workflows handle the short term well. But none were designed for the long, slow, unpredictable buying cycle customers follow today. Salespeople and CRM systems often interpret silence as disinterest, causing leads to be closed too early.
                 </p>
-                <p className="font-medium text-white text-xl">
-                  It lives where timing changes — and creates conversations months after everyone else gives up.
+                <ul className="space-y-3 pt-2">
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Salespeople naturally prioritize today's buyers</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>AI tools focus on early engagement and quick appointment asks</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Salespeople and CRM systems often close leads too early due to silence</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Customers pause, research, and return weeks or months later</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Each month, more good customers get swept into cold or lost status</span>
+                  </li>
+                </ul>
+                <p className="font-medium text-white text-xl pt-2">
+                  Traditional follow-up isn't built for long-term patience or timing-based re-engagement.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* HOW IT WORKS */}
+          {/* WHERE R.A.D.A.R. TAKES OVER */}
           <div className="border-b border-gray-800">
             <button
               onClick={() => toggleSection('how')}
               className="w-full flex items-center justify-between py-6 text-left group"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-white group-hover:text-red-500 transition-colors">
-                How It Works
+                Where R.A.D.A.R. Takes Over
               </h2>
               <span className="text-3xl text-gray-400 group-hover:text-red-500 transition-colors">
                 {openSection === 'how' ? '−' : '+'}
               </span>
             </button>
             <div className={`overflow-hidden transition-all duration-300 ${openSection === 'how' ? 'max-h-[600px] pb-6' : 'max-h-0'}`}>
-              <ul className="space-y-3 text-lg text-gray-300 mb-8">
-                <li className="flex items-start">
-                  <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
-                  <span>Maintains a persistent engagement state</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
-                  <span>Uses timing and silence as signals</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
-                  <span>Steps back when humans engage</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
-                  <span>Steps back in when engagement drops</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
-                  <span>Never restarts; never expires</span>
-                </li>
-              </ul>
-              <div>
-                <p className="text-xl text-white font-medium mb-2">
-                  RADAR doesn't replace people or AI.
+              <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
+                <p>
+                  R.A.D.A.R. activates exactly where salespeople stop, where AI finishes, and where the CRM is about to close the opportunity. It fills the long-term gap no existing system covers.
                 </p>
-                <p className="text-lg text-gray-400">
-                  It supports both, for months and years.
+                <ul className="space-y-3 pt-2">
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Maintains friendly, low-pressure dialogue over time</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Stays with customers until their timing aligns</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Prevents leads from slipping into cold or lost prematurely</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Intercepts customers before CRM automation closes them out</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Converts a compounding cold/lost pool into a compounding pipeline of opportunity</span>
+                  </li>
+                </ul>
+                <p className="font-medium text-white text-xl pt-2">
+                  R.A.D.A.R. doesn't push — it stays present.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* SUPPORTING FRAMEWORK */}
+          {/* HOW R.A.D.A.R. WORKS BEHIND THE SCENES */}
           <div className="border-b border-gray-800">
             <button
               onClick={() => toggleSection('framework')}
               className="w-full flex items-center justify-between py-6 text-left group"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-white group-hover:text-red-500 transition-colors">
-                RADAR's Supporting Framework
+                How R.A.D.A.R. Works Behind the Scenes
               </h2>
               <span className="text-3xl text-gray-400 group-hover:text-red-500 transition-colors">
                 {openSection === 'framework' ? '−' : '+'}
               </span>
             </button>
-            <div className={`overflow-hidden transition-all duration-300 ${openSection === 'framework' ? 'max-h-96 pb-6' : 'max-h-0'}`}>
-              <div className="space-y-4 text-lg text-gray-300">
-                <p><span className="text-white font-semibold">ACE</span> opens the conversation.</p>
-                <p><span className="text-white font-semibold">ALIGN</span> matches timing and intent.</p>
-                <p><span className="text-white font-semibold">ERL</span> keeps communication consistent.</p>
-                <p className="text-white font-semibold pt-2">RADAR sustains the long-term engagement.</p>
+            <div className={`overflow-hidden transition-all duration-300 ${openSection === 'framework' ? 'max-h-[600px] pb-6' : 'max-h-0'}`}>
+              <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
+                <p>
+                  R.A.D.A.R. reads customer behavior inside your CRM and engages using simple, human-sounding messages at the moments when traditional follow-up disappears.
+                </p>
+                <ul className="space-y-3 pt-2">
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Monitors timing signals</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Uses silence as "not yet," not "no"</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Detects inactivity before auto-close rules trigger</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Sends natural check-ins rather than appointment pressure</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Scales every month as more long-term customers accumulate</span>
+                  </li>
+                </ul>
+                <p className="font-medium text-white text-xl pt-2">
+                  The longer R.A.D.A.R. runs, the stronger it becomes.
+                </p>
               </div>
             </div>
           </div>
 
-          {/* REAL-WORLD IMPACT */}
+          {/* THE OUTCOME */}
           <div className="border-b border-gray-800">
             <button
               onClick={() => toggleSection('impact')}
               className="w-full flex items-center justify-between py-6 text-left group"
             >
               <h2 className="text-2xl md:text-3xl font-bold text-white group-hover:text-red-500 transition-colors">
-                Real-World Impact
+                The Outcome: Revenue That Would've Never Happened
               </h2>
               <span className="text-3xl text-gray-400 group-hover:text-red-500 transition-colors">
                 {openSection === 'impact' ? '−' : '+'}
               </span>
             </button>
-            <div className={`overflow-hidden transition-all duration-300 ${openSection === 'impact' ? 'max-h-96 pb-6' : 'max-h-0'}`}>
-              <p className="text-lg text-gray-300 leading-relaxed">
-                In live dealership CRMs, RADAR consistently drives new conversations from aged and "lost" opportunities — with low opt-out rates and high re-engagement when implemented correctly.
-              </p>
+            <div className={`overflow-hidden transition-all duration-300 ${openSection === 'impact' ? 'max-h-[600px] pb-6' : 'max-h-0'}`}>
+              <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
+                <p>
+                  R.A.D.A.R. re-engages customers who still intended to buy but were pushed into cold or lost status long before their buying cycle ended.
+                </p>
+                <ul className="space-y-3 pt-2">
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Reopens conversations with long-cycle buyers</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Revives opportunities the CRM buried too early</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Surfaces meaningful revenue that was previously unreachable</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Builds a growing reservoir of warm customers over time</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3" style={{ color: '#ed2024' }}>•</span>
+                    <span>Converts long-term silence into long-term opportunity</span>
+                  </li>
+                </ul>
+                <p className="font-medium text-white text-xl pt-2">
+                  R.A.D.A.R. turns abandoned revenue into recovered opportunity.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -345,12 +440,11 @@ export default function RadarPage() {
       <section className="px-6 py-20 text-white" style={{ background: 'linear-gradient(135deg, #1a0000 0%, #000000 50%, #1a0000 100%)' }}>
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            If this resonates…
+            If this feels familiar and you'd like to explore what you might be missing…
           </h2>
           
           <p className="text-lg leading-relaxed mb-8 text-gray-300">
-            Let's talk timing, behavior, and missed opportunity.<br />
-            No pitch. Just a conversation.
+            Let's connect.
           </p>
           
           <div className="space-y-4 mb-8">
