@@ -69,7 +69,7 @@ export default function RadarPage() {
       </header>
 
       {/* HERO */}
-      <section className="relative px-6 pt-32 pb-20 md:pt-48 md:pb-32 min-h-[75vh] flex items-center overflow-hidden">
+      <section className="relative px-6 pt-32 pb-8 md:pt-48 md:pb-12 min-h-[75vh] flex items-center overflow-hidden">
         {/* Animated Radar Background */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" className="w-full h-full max-w-6xl">
@@ -188,17 +188,10 @@ export default function RadarPage() {
               >
                 Let's talk
               </a>
-              <a
-                href="#what-it-does"
-                className="px-8 py-3 text-gray-300 font-medium flex items-center gap-2 transition-colors text-lg hover:text-white"
-              >
-                What does it do? <span>→</span>
-              </a>
             </div>
           </div>
         </div>
       </section>
-
       {/* ACCORDION SECTIONS */}
       <section className="px-6 py-16 bg-black">
         <div className="max-w-4xl mx-auto space-y-4">
