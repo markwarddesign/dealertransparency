@@ -35,6 +35,20 @@ export default function RadarPage() {
 
   const toggleAccordion = (id: string) => {
     setOpenAccordion(openAccordion === id ? null : id);
+    // Scroll to top of accordion section with offset for sticky header
+    setTimeout(() => {
+      const accordionSection = document.getElementById('accordion-section');
+      if (accordionSection) {
+        const headerHeight = 80; // Height of sticky header
+        const elementPosition = accordionSection.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50);
   };
 
   return (
@@ -133,7 +147,7 @@ export default function RadarPage() {
         <div className="max-w-6xl mx-auto">
           
           {/* Mobile Accordion View */}
-          <div className="lg:hidden">
+          <div id="accordion-section" className="lg:hidden">
             <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
                 The Silent Profit Leak
