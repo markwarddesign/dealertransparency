@@ -229,7 +229,7 @@ export default function RadarPage() {
                             <span>Each month, more good customers get swept into cold or lost status</span>
                           </li>
                         </ul>
-                        <p className="font-semibold text-gray-900 text-lg pt-4">
+                        <p className="font-semibold text-white text-lg pt-4">
                           Traditional follow-up isn't built for long-term patience or timing-based re-engagement.
                         </p>
                       </div>
@@ -259,7 +259,7 @@ export default function RadarPage() {
                             <span>Converts a compounding cold/lost pool into a compounding pipeline of opportunity</span>
                           </li>
                         </ul>
-                        <p className="font-semibold text-gray-900 text-lg pt-4">
+                        <p className="font-semibold text-white text-lg pt-4">
                           RADAR doesn't push — it stays present.
                         </p>
                       </div>
@@ -289,7 +289,7 @@ export default function RadarPage() {
                             <span>Scales every month as more long-term customers accumulate</span>
                           </li>
                         </ul>
-                        <p className="font-semibold text-gray-900 text-lg pt-4">
+                        <p className="font-semibold text-white text-lg pt-4">
                           The longer RADAR runs, the stronger it becomes.
                         </p>
                       </div>
@@ -319,7 +319,7 @@ export default function RadarPage() {
                             <span>Converts long-term silence into long-term opportunity</span>
                           </li>
                         </ul>
-                        <p className="font-semibold text-gray-900 text-lg pt-4">
+                        <p className="font-semibold text-white text-lg pt-4">
                           RADAR turns abandoned revenue into recovered opportunity.
                         </p>
                       </div>
