@@ -14,11 +14,11 @@ export default function RadarPage() {
   }, []);
 
   const tabs = [
-    { id: 'problem', label: 'The Problem No One Sees' },
-    { id: 'why', label: 'Why Traditional Follow-Up Fails' },
-    { id: 'radar', label: 'Where RADAR Takes Over' },
-    { id: 'how', label: 'How RADAR Works Behind the Scenes' },
-    { id: 'outcome', label: "The Outcome: Revenue That Would've Never Happened" },
+    { id: 'problem', label: 'Why Leads Really Go Silent' },
+    { id: 'why', label: 'Why Follow-Up Breaks Down' },
+    { id: 'radar', label: 'Where R.A.D.A.R. Takes Over' },
+    { id: 'how', label: 'How R.A.D.A.R. Actually Works' },
+    { id: 'outcome', label: 'The Revenue You\'re Losing' },
   ];
 
   const currentIndex = tabs.findIndex(tab => tab.id === activeTab);
