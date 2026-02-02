@@ -100,7 +100,7 @@ export default function RadarPage() {
         </div>
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-white">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-white">
             Behavioral engagement layer inside your CRM
           </h1>
           
@@ -183,23 +183,23 @@ export default function RadarPage() {
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Follow-up typically stops after just a few days of no response</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Follow-up typically stops after just a few days of no response</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>CRM automation moves leads to cold or lost at preset inactivity thresholds</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>CRM automation moves leads to cold or lost at preset inactivity thresholds</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>AI workflows end early because they focus on appointment-first engagement</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>AI workflows end early because they focus on appointment-first engagement</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Customers buy on their own timeline — not the dealership's</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Customers buy on their own timeline — not the dealership's</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>The cold/lost pool grows larger every single month</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>The cold/lost pool grows larger every single month</span>
                           </li>
                         </ul>
                       </div>
@@ -210,23 +210,23 @@ export default function RadarPage() {
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Salespeople naturally prioritize today's buyers</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Salespeople naturally prioritize today's buyers</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>AI tools focus on early engagement and quick appointment asks</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>AI tools focus on early engagement and quick appointment asks</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Salespeople and CRM systems often close leads too early due to silence</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Salespeople and CRM systems often close leads too early due to silence</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Customers pause, research, and return weeks or months later</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Customers pause, research, and return weeks or months later</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Each month, more good customers get swept into cold or lost status</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Each month, more good customers get swept into cold or lost status</span>
                           </li>
                         </ul>
                         <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
@@ -240,23 +240,23 @@ export default function RadarPage() {
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Maintains friendly, low-pressure dialogue over time</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Maintains friendly, low-pressure dialogue over time</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Stays with customers until their timing aligns</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Stays with customers until their timing aligns</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Prevents leads from slipping into cold or lost prematurely</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Prevents leads from slipping into cold or lost prematurely</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Intercepts customers before CRM automation closes them out</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Intercepts customers before CRM automation closes them out</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Converts a compounding cold/lost pool into a compounding pipeline of opportunity</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Converts a compounding cold/lost pool into a compounding pipeline of opportunity</span>
                           </li>
                         </ul>
                         <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
@@ -270,23 +270,23 @@ export default function RadarPage() {
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Monitors timing signals</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Monitors timing signals</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Uses silence as "not yet," not "no"</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Uses silence as "not yet," not "no"</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Detects inactivity before auto-close rules trigger</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Detects inactivity before auto-close rules trigger</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Sends natural check-ins rather than appointment pressure</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Sends natural check-ins rather than appointment pressure</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Scales every month as more long-term customers accumulate</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Scales every month as more long-term customers accumulate</span>
                           </li>
                         </ul>
                         <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
@@ -300,23 +300,23 @@ export default function RadarPage() {
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Reopens conversations with long-cycle buyers</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Reopens conversations with long-cycle buyers</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Revives opportunities the CRM buried too early</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Revives opportunities the CRM buried too early</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Surfaces meaningful revenue that was previously unreachable</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Surfaces meaningful revenue that was previously unreachable</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Builds a growing reservoir of warm customers over time</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Builds a growing reservoir of warm customers over time</span>
                           </li>
                           <li className="flex items-start">
                             <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                            <span>Converts long-term silence into long-term opportunity</span>
+                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Converts long-term silence into long-term opportunity</span>
                           </li>
                         </ul>
                         <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
@@ -372,23 +372,23 @@ export default function RadarPage() {
                     <ul className="space-y-3 pt-4">
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Follow-up typically stops after just a few days of no response</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Follow-up typically stops after just a few days of no response</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>CRM automation moves leads to cold or lost at preset inactivity thresholds</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>CRM automation moves leads to cold or lost at preset inactivity thresholds</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>AI workflows end early because they focus on appointment-first engagement</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>AI workflows end early because they focus on appointment-first engagement</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Customers buy on their own timeline — not the dealership's</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Customers buy on their own timeline — not the dealership's</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>The cold/lost pool grows larger every single month</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>The cold/lost pool grows larger every single month</span>
                       </li>
                     </ul>
                   </div>
@@ -408,23 +408,23 @@ export default function RadarPage() {
                     <ul className="space-y-3 pt-4">
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Salespeople naturally prioritize today's buyers</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Salespeople naturally prioritize today's buyers</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>AI tools focus on early engagement and quick appointment asks</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>AI tools focus on early engagement and quick appointment asks</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Salespeople and CRM systems often close leads too early due to silence</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Salespeople and CRM systems often close leads too early due to silence</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Customers pause, research, and return weeks or months later</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Customers pause, research, and return weeks or months later</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Each month, more good customers get swept into cold or lost status</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Each month, more good customers get swept into cold or lost status</span>
                       </li>
                     </ul>
                     <p className="font-semibold text-gray-900 text-2xl pt-4">
@@ -447,23 +447,23 @@ export default function RadarPage() {
                     <ul className="space-y-3 pt-4">
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Maintains friendly, low-pressure dialogue over time</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Maintains friendly, low-pressure dialogue over time</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Stays with customers until their timing aligns</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Stays with customers until their timing aligns</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Prevents leads from slipping into cold or lost prematurely</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Prevents leads from slipping into cold or lost prematurely</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Intercepts customers before CRM automation closes them out</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Intercepts customers before CRM automation closes them out</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Converts a compounding cold/lost pool into a compounding pipeline of opportunity</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Converts a compounding cold/lost pool into a compounding pipeline of opportunity</span>
                       </li>
                     </ul>
                     <p className="font-semibold text-gray-900 text-2xl pt-4">
@@ -486,23 +486,23 @@ export default function RadarPage() {
                     <ul className="space-y-3 pt-4">
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Monitors timing signals</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Monitors timing signals</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Uses silence as "not yet," not "no"</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Uses silence as "not yet," not "no"</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Detects inactivity before auto-close rules trigger</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Detects inactivity before auto-close rules trigger</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Sends natural check-ins rather than appointment pressure</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Sends natural check-ins rather than appointment pressure</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Scales every month as more long-term customers accumulate</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Scales every month as more long-term customers accumulate</span>
                       </li>
                     </ul>
                     <p className="font-semibold text-gray-900 text-2xl pt-4">
@@ -525,23 +525,23 @@ export default function RadarPage() {
                     <ul className="space-y-3 pt-4">
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Reopens conversations with long-cycle buyers</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Reopens conversations with long-cycle buyers</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Revives opportunities the CRM buried too early</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Revives opportunities the CRM buried too early</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Surfaces meaningful revenue that was previously unreachable</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Surfaces meaningful revenue that was previously unreachable</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Builds a growing reservoir of warm customers over time</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Builds a growing reservoir of warm customers over time</span>
                       </li>
                       <li className="flex items-start">
                         <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                        <span>Converts long-term silence into long-term opportunity</span>
+                                                    <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Converts long-term silence into long-term opportunity</span>
                       </li>
                     </ul>
                     <p className="font-semibold text-gray-900 text-2xl pt-4">
