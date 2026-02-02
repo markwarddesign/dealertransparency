@@ -33,22 +33,27 @@ export default function RadarPage() {
     setActiveTab(tabs[prevIndex].id);
   };
 
-  const toggleAccordion = (id: string) => {
+  const toggleAccordion = (id: string, event?: React.MouseEvent<HTMLButtonElement>) => {
+    const isOpening = openAccordion !== id;
     setOpenAccordion(openAccordion === id ? null : id);
-    // Scroll to top of accordion section with offset for sticky header
-    setTimeout(() => {
-      const accordionSection = document.getElementById('accordion-section');
-      if (accordionSection) {
-        const headerHeight = 80; // Height of sticky header
-        const elementPosition = accordionSection.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }, 50);
+    
+    // Only scroll when opening an accordion
+    if (isOpening) {
+      // Wait for DOM to fully update before scrolling
+      setTimeout(() => {
+        const buttonElement = document.getElementById(`accordion-btn-${id}`);
+        if (buttonElement) {
+          const headerHeight = 72; // Height of sticky header
+          const elementPosition = buttonElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerHeight - 8;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 300); // Longer delay to ensure DOM is fully updated
+    }
   };
 
   return (
@@ -148,7 +153,7 @@ export default function RadarPage() {
           
           {/* Mobile Accordion View */}
           <div id="accordion-section" className="lg:hidden">
-            <div className="text-center mb-8">
+            <div id="accordion-title" className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
                 The Silent Profit Leak
               </h2>
@@ -160,7 +165,8 @@ export default function RadarPage() {
             {tabs.map((tab, index) => (
               <div key={tab.id} className="rounded-2xl overflow-hidden transition-colors">
                 <button
-                  onClick={() => toggleAccordion(tab.id)}
+                  id={`accordion-btn-${tab.id}`}
+                  onClick={(e) => toggleAccordion(tab.id, e)}
                   className="w-full flex items-center gap-4 p-6 text-left transition-colors"
                   style={{ 
                     backgroundColor: openAccordion === tab.id ? '#10B981' : (isDarkMode ? 'transparent' : 'white')
