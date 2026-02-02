@@ -1,11 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function RadarPage() {
   const currentYear = new Date().getFullYear();
   const [activeTab, setActiveTab] = useState('problem');
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setIsDarkMode(prefersDark);
+  }, []);
 
   const tabs = [
     { id: 'problem', label: 'The Problem' },
@@ -32,12 +38,18 @@ export default function RadarPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className={`min-h-screen transition-colors ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
       {/* HEADER */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+      <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors ${
+        isDarkMode ? 'border-gray-700' : 'bg-white border-gray-200'
+      }`} style={{ backgroundColor: isDarkMode ? '#001a33' : 'white' }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img src="/Radar_Logo_Color.svg" alt="RADAR" className="h-10" />
+            <img 
+              src={isDarkMode ? "/Radar_Logo_Reverse.svg" : "/Radar_Logo_Color.svg"} 
+              alt="RADAR" 
+              className="h-10" 
+            />
           </div>
           <a
             href="mailto:ward.matt@me.com?subject=RADAR%20-%20quick%20conversation"
@@ -107,17 +119,21 @@ export default function RadarPage() {
       </section>
       
       {/* CONTENT SECTIONS WITH VERTICAL TABS */}
-      <section className="relative px-6 py-32 bg-gray-50 overflow-hidden">
+      <section className={`relative px-6 py-32 overflow-hidden transition-colors ${
+        isDarkMode ? '' : 'bg-gray-50'
+      }`} style={{ backgroundColor: isDarkMode ? '#001a33' : undefined }}>
         <div className="max-w-6xl mx-auto">
           
           {/* Mobile Accordion View */}
           <div className="lg:hidden space-y-3">
             {tabs.map((tab) => (
-              <div key={tab.id} className="bg-white rounded-2xl shadow-sm overflow-hidden">
+              <div key={tab.id} className="bg-white rounded-2xl shadow-sm overflow-hidden transition-colors">
                 <button
                   onClick={() => toggleAccordion(tab.id)}
-                  className="w-full flex items-center justify-between p-6 text-left"
-                  style={{ backgroundColor: openAccordion === tab.id ? '#123b60' : 'white' }}
+                  className="w-full flex items-center justify-between p-6 text-left transition-colors"
+                  style={{ 
+                    backgroundColor: openAccordion === tab.id ? '#123b60' : 'white'
+                  }}
                 >
                   <span
                     className="text-xl font-semibold"
@@ -304,7 +320,7 @@ export default function RadarPage() {
                         : 'bg-white hover:shadow-md'
                     }`}
                     style={{
-                      backgroundColor: activeTab === tab.id ? '#123b60' : 'white',
+                      backgroundColor: activeTab === tab.id ? '#123b60' : undefined,
                       color: activeTab === tab.id ? 'white' : '#123b60',
                     }}
                   >
@@ -579,7 +595,24 @@ export default function RadarPage() {
       {/* FOOTER */}
       <footer className="px-6 py-12 border-t" style={{ backgroundColor: '#001a33', borderColor: '#003366' }}>
         <div className="max-w-7xl mx-auto text-center text-sm text-blue-200">
-          <p>© 2026 Dealer Transparency. All rights reserved.</p>
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <p>© 2026 Dealer Transparency. All rights reserved.</p>
+            <button
+              onClick={() => setIsDarkMode(!isDarkMode)}
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors opacity-50 hover:opacity-100"
+              aria-label="Toggle dark mode"
+            >
+              {isDarkMode ? (
+                <svg className="w-5 h-5 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
       </footer>
     </div>
