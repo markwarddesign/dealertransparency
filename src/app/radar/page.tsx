@@ -14,11 +14,11 @@ export default function RadarPage() {
   }, []);
 
   const tabs = [
-    { id: 'problem', label: 'The Problem' },
-    { id: 'why', label: 'Why It Fails' },
-    { id: 'radar', label: 'Where RADAR Fits' },
-    { id: 'how', label: 'How It Works' },
-    { id: 'outcome', label: 'The Outcome' },
+    { id: 'problem', label: 'The Problem No One Sees' },
+    { id: 'why', label: 'Why Traditional Follow-Up Fails' },
+    { id: 'radar', label: 'Where RADAR Takes Over' },
+    { id: 'how', label: 'How RADAR Works Behind the Scenes' },
+    { id: 'outcome', label: "The Outcome: Revenue That Would've Never Happened" },
   ];
 
   const currentIndex = tabs.findIndex(tab => tab.id === activeTab);
@@ -305,11 +305,11 @@ export default function RadarPage() {
 
           {/* Desktop Tabs + Carousel View */}
           <div className="hidden lg:block">
-            <div className="flex flex-col lg:flex-row gap-8">
+            <div className="flex flex-col lg:flex-row gap-8 lg:items-start">
             
             {/* Vertical Tabs Navigation */}
             <div className="lg:w-80 flex-shrink-0">
-              <div className="lg:sticky lg:top-32 space-y-2">
+              <div className="space-y-2">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
