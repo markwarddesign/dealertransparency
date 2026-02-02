@@ -14,7 +14,7 @@ export default function RadarPage() {
   }, []);
 
   const tabs = [
-    { id: 'problem', label: 'Why Leads Really Go Silent' },
+    { id: 'problem', label: 'Why Leads Go Silent' },
     { id: 'why', label: 'Why Follow-Up Breaks Down' },
     { id: 'radar', label: 'Where R.A.D.A.R. Takes Over' },
     { id: 'how', label: 'How R.A.D.A.R. Actually Works' },
@@ -53,8 +53,12 @@ export default function RadarPage() {
           </div>
           <a
             href="mailto:ward.matt@me.com?subject=RADAR%20-%20quick%20conversation"
-            className="px-6 py-2.5 text-sm font-semibold rounded-full transition-all"
-            style={{ backgroundColor: '#10B981', color: 'white' }}
+            className="px-6 py-2.5 text-sm font-semibold rounded-full transition-all hover:scale-105 active:scale-95"
+            style={{ 
+              background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+              color: 'white',
+              boxShadow: '0 4px 15px rgba(5, 100, 80, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+            }}
           >
             Get started
           </a>
@@ -110,8 +114,12 @@ export default function RadarPage() {
           
           <a
             href="mailto:ward.matt@me.com?subject=RADAR%20-%20Let's%20Connect"
-            className="inline-block px-10 py-4 text-lg font-semibold rounded-full transition-all shadow-lg hover:shadow-xl"
-            style={{ backgroundColor: '#10B981', color: 'white' }}
+            className="inline-block px-10 py-4 text-lg font-semibold rounded-full transition-all hover:scale-105 hover:shadow-2xl active:scale-95"
+            style={{ 
+              background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+              color: 'white',
+              boxShadow: '0 10px 30px rgba(5, 100, 80, 0.7), inset 0 2px 0 rgba(255, 255, 255, 0.2)'
+            }}
           >
             Get started
           </a>
@@ -575,8 +583,12 @@ export default function RadarPage() {
           
           <a
             href="mailto:ward.matt@me.com?subject=RADAR%20-%20quick%20conversation"
-            className="inline-block px-10 py-4 text-lg font-semibold rounded-full transition-all shadow-lg hover:shadow-xl mb-8"
-            style={{ backgroundColor: '#10B981', color: 'white' }}
+            className="inline-block px-10 py-4 text-lg font-semibold rounded-full transition-all hover:scale-105 hover:shadow-2xl active:scale-95 mb-8"
+            style={{ 
+              background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+              color: 'white',
+              boxShadow: '0 10px 30px rgba(5, 100, 80, 0.7), inset 0 2px 0 rgba(255, 255, 255, 0.2)'
+            }}
           >
             Contact us
           </a>
