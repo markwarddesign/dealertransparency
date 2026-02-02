@@ -16,8 +16,8 @@ export default function RadarPage() {
   const tabs = [
     { id: 'problem', label: 'Why Leads Go Silent' },
     { id: 'why', label: 'Why Follow-Up Breaks Down' },
-    { id: 'radar', label: 'Where R.A.D.A.R. Takes Over' },
-    { id: 'how', label: 'How R.A.D.A.R. Actually Works' },
+    { id: 'radar', label: 'Where RADAR Takes Over' },
+    { id: 'how', label: 'How RADAR Actually Works' },
     { id: 'outcome', label: 'The Revenue You\'re Losing' },
   ];
 
@@ -127,39 +127,58 @@ export default function RadarPage() {
       </section>
       
       {/* CONTENT SECTIONS WITH VERTICAL TABS */}
-      <section className={`relative px-6 py-32 overflow-hidden transition-colors ${
+      <section className={`relative px-6 py-16 md:py-32 overflow-hidden transition-colors ${
         isDarkMode ? '' : 'bg-gray-50'
       }`} style={{ backgroundColor: isDarkMode ? '#001a33' : undefined }}>
         <div className="max-w-6xl mx-auto">
           
           {/* Mobile Accordion View */}
-          <div className="lg:hidden space-y-3">
-            {tabs.map((tab) => (
-              <div key={tab.id} className="bg-white rounded-2xl shadow-sm overflow-hidden transition-colors">
+          <div className="lg:hidden">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
+                The Silent Profit Leak
+              </h2>
+              <p className="text-xl md:text-2xl" style={{ color: isDarkMode ? '#10B981' : '#10B981' }}>
+                And How to Stop It
+              </p>
+            </div>
+            <div className="space-y-3">
+            {tabs.map((tab, index) => (
+              <div key={tab.id} className="rounded-2xl overflow-hidden transition-colors">
                 <button
                   onClick={() => toggleAccordion(tab.id)}
-                  className="w-full flex items-center justify-between p-6 text-left transition-colors"
+                  className="w-full flex items-center gap-4 p-6 text-left transition-colors"
                   style={{ 
-                    backgroundColor: openAccordion === tab.id ? '#10B981' : 'white'
+                    backgroundColor: openAccordion === tab.id ? '#10B981' : 'transparent'
                   }}
                 >
                   <span
-                    className="text-xl font-semibold"
-                    style={{ color: openAccordion === tab.id ? 'white' : '#123b60' }}
+                    className="text-2xl font-bold flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full"
+                    style={{ 
+                      color: openAccordion === tab.id ? '#10B981' : '#10B981',
+                      backgroundColor: openAccordion === tab.id ? 'white' : 'rgba(255, 255, 255, 0.1)',
+                      border: openAccordion === tab.id ? 'none' : '2px solid rgba(255, 255, 255, 0.3)'
+                    }}
+                  >
+                    {index + 1}
+                  </span>
+                  <span
+                    className="text-xl font-semibold flex-1"
+                    style={{ color: openAccordion === tab.id ? 'white' : 'white' }}
                   >
                     {tab.label}
                   </span>
                   <span
                     className="text-2xl font-light"
-                    style={{ color: openAccordion === tab.id ? 'white' : '#9CA3AF' }}
+                    style={{ color: openAccordion === tab.id ? 'white' : '#10B981' }}
                   >
                     {openAccordion === tab.id ? '−' : '+'}
                   </span>
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${openAccordion === tab.id ? 'max-h-[2000px]' : 'max-h-0'}`}>
-                  <div className="p-6 border-l-4" style={{ borderLeftColor: '#10B981' }}>
+                  <div className="p-6 pl-16 bg-gradient-to-r from-green-500/10 to-transparent">
                     {tab.id === 'problem' && (
-                      <div className="space-y-4 text-base text-gray-700 leading-relaxed">
+                      <div className="space-y-4 text-base text-white leading-relaxed">
                         <p>Most customers don't go silent because they already purchased — they go silent because follow-up ends too early. Without a process change, most leads end up in cold or lost status within just 14–30 days. The CRM closes them long before many of these customers are actually out of the market.</p>
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
@@ -186,7 +205,7 @@ export default function RadarPage() {
                       </div>
                     )}
                     {tab.id === 'why' && (
-                      <div className="space-y-4 text-base text-gray-700 leading-relaxed">
+                      <div className="space-y-4 text-base text-white leading-relaxed">
                         <p>Salespeople, AI tools, and CRM workflows handle the short term well. But none were designed for the long, slow, unpredictable buying cycle customers follow today. Salespeople and CRM systems often interpret silence as disinterest, causing leads to be closed too early.</p>
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
@@ -216,7 +235,7 @@ export default function RadarPage() {
                       </div>
                     )}
                     {tab.id === 'radar' && (
-                      <div className="space-y-4 text-base text-gray-700 leading-relaxed">
+                      <div className="space-y-4 text-base text-white leading-relaxed">
                         <p>RADAR activates exactly where salespeople stop, where AI finishes, and where the CRM is about to close the opportunity. It fills the long-term gap no existing system covers.</p>
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
@@ -246,7 +265,7 @@ export default function RadarPage() {
                       </div>
                     )}
                     {tab.id === 'how' && (
-                      <div className="space-y-4 text-base text-gray-700 leading-relaxed">
+                      <div className="space-y-4 text-base text-white leading-relaxed">
                         <p>RADAR reads customer behavior inside your CRM and engages using simple, human-sounding messages at the moments when traditional follow-up disappears.</p>
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
@@ -276,7 +295,7 @@ export default function RadarPage() {
                       </div>
                     )}
                     {tab.id === 'outcome' && (
-                      <div className="space-y-4 text-base text-gray-700 leading-relaxed">
+                      <div className="space-y-4 text-base text-white leading-relaxed">
                         <p>RADAR re-engages customers who still intended to buy but were pushed into cold or lost status long before their buying cycle ended.</p>
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
@@ -310,6 +329,7 @@ export default function RadarPage() {
               </div>
             ))}
           </div>
+          </div>
 
           {/* Desktop Tabs + Carousel View */}
           <div className="hidden lg:block">
@@ -317,19 +337,19 @@ export default function RadarPage() {
             
             {/* Vertical Tabs Navigation */}
             <div className="lg:w-80 flex-shrink-0">
-              <div className="space-y-2">
+              <div className="space-y-0 border-l-4 border-gray-200">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`w-full text-left px-6 py-4 rounded-2xl transition-all font-semibold text-lg ${
+                    className={`w-full text-left px-6 py-4 transition-all font-semibold text-lg border-l-4 -ml-1 ${
                       activeTab === tab.id
-                        ? 'shadow-lg'
-                        : 'bg-white hover:shadow-md'
+                        ? ''
+                        : 'hover:border-gray-300'
                     }`}
                     style={{
-                      backgroundColor: activeTab === tab.id ? '#10B981' : undefined,
-                      color: activeTab === tab.id ? 'white' : '#123b60',
+                      borderLeftColor: activeTab === tab.id ? '#10B981' : 'transparent',
+                      color: activeTab === tab.id ? '#10B981' : 'white',
                     }}
                   >
                     {tab.label}
