@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function RadarPage() {
   const currentYear = new Date().getFullYear();
   const [activeTab, setActiveTab] = useState('problem');
-  const [openAccordion, setOpenAccordion] = useState<string | null>('problem');
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
   const tabs = [
     { id: 'problem', label: 'The Problem' },
