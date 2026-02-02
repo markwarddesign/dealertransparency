@@ -570,7 +570,7 @@ export default function RadarPage() {
           </h2>
           
           <p className="text-xl text-blue-100 mb-12">
-            Let's explore what you might be missing.
+            If you are tired of wasting money converting a painfully low percentage of opportunities, get on the RADAR!
           </p>
           
           <a
