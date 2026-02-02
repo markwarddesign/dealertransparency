@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 // 1. Import the Inter font
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -23,6 +24,19 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       {/* 3. Apply the font variable and global styles */}
       <body className={`${inter.variable} font-sans bg-white antialiased`}>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-S69TX28RLT"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-S69TX28RLT');
+          `}
+        </Script>
         {children} {/* This is where your app/page.tsx will be rendered */}
       </body>
     </html>
