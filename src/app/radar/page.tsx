@@ -128,7 +128,7 @@ export default function RadarPage() {
       
       {/* CONTENT SECTIONS WITH VERTICAL TABS */}
       <section className={`relative px-6 py-16 md:py-32 overflow-hidden transition-colors ${
-        isDarkMode ? '' : 'bg-gray-50'
+        isDarkMode ? '' : 'bg-gray-200'
       }`} style={{ backgroundColor: isDarkMode ? '#001a33' : undefined }}>
         <div className="max-w-6xl mx-auto">
           
@@ -149,22 +149,22 @@ export default function RadarPage() {
                   onClick={() => toggleAccordion(tab.id)}
                   className="w-full flex items-center gap-4 p-6 text-left transition-colors"
                   style={{ 
-                    backgroundColor: openAccordion === tab.id ? '#10B981' : 'transparent'
+                    backgroundColor: openAccordion === tab.id ? '#10B981' : (isDarkMode ? 'transparent' : 'white')
                   }}
                 >
                   <span
                     className="text-2xl font-bold flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full"
                     style={{ 
                       color: openAccordion === tab.id ? '#10B981' : '#10B981',
-                      backgroundColor: openAccordion === tab.id ? 'white' : 'rgba(255, 255, 255, 0.1)',
-                      border: openAccordion === tab.id ? 'none' : '2px solid rgba(255, 255, 255, 0.3)'
+                      backgroundColor: openAccordion === tab.id ? 'white' : (isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(16, 185, 129, 0.1)'),
+                      border: openAccordion === tab.id ? 'none' : (isDarkMode ? '2px solid rgba(255, 255, 255, 0.3)' : '2px solid rgba(16, 185, 129, 0.3)')
                     }}
                   >
                     {index + 1}
                   </span>
                   <span
                     className="text-xl font-semibold flex-1"
-                    style={{ color: openAccordion === tab.id ? 'white' : 'white' }}
+                    style={{ color: openAccordion === tab.id ? 'white' : (isDarkMode ? 'white' : '#123b60') }}
                   >
                     {tab.label}
                   </span>
@@ -178,7 +178,7 @@ export default function RadarPage() {
                 <div className={`overflow-hidden transition-all duration-300 ${openAccordion === tab.id ? 'max-h-[2000px]' : 'max-h-0'}`}>
                   <div className="p-6 pl-16 bg-gradient-to-r from-green-500/10 to-transparent">
                     {tab.id === 'problem' && (
-                      <div className="space-y-4 text-base text-white leading-relaxed">
+                      <div className={`space-y-4 text-base leading-relaxed ${isDarkMode ? 'text-white' : 'text-gray-700'}`}>
                         <p>Most customers don't go silent because they already purchased — they go silent because follow-up ends too early. Without a process change, most leads end up in cold or lost status within just 14–30 days. The CRM closes them long before many of these customers are actually out of the market.</p>
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
@@ -205,7 +205,7 @@ export default function RadarPage() {
                       </div>
                     )}
                     {tab.id === 'why' && (
-                      <div className="space-y-4 text-base text-white leading-relaxed">
+                      <div className={`space-y-4 text-base leading-relaxed ${isDarkMode ? "text-white" : "text-gray-700"}`}>
                         <p>Salespeople, AI tools, and CRM workflows handle the short term well. But none were designed for the long, slow, unpredictable buying cycle customers follow today. Salespeople and CRM systems often interpret silence as disinterest, causing leads to be closed too early.</p>
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
@@ -229,13 +229,13 @@ export default function RadarPage() {
                             <span>Each month, more good customers get swept into cold or lost status</span>
                           </li>
                         </ul>
-                        <p className="font-semibold text-white text-lg pt-4">
+                        <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
                           Traditional follow-up isn't built for long-term patience or timing-based re-engagement.
                         </p>
                       </div>
                     )}
                     {tab.id === 'radar' && (
-                      <div className="space-y-4 text-base text-white leading-relaxed">
+                      <div className={`space-y-4 text-base leading-relaxed ${isDarkMode ? "text-white" : "text-gray-700"}`}>
                         <p>RADAR activates exactly where salespeople stop, where AI finishes, and where the CRM is about to close the opportunity. It fills the long-term gap no existing system covers.</p>
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
@@ -259,13 +259,13 @@ export default function RadarPage() {
                             <span>Converts a compounding cold/lost pool into a compounding pipeline of opportunity</span>
                           </li>
                         </ul>
-                        <p className="font-semibold text-white text-lg pt-4">
+                        <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
                           RADAR doesn't push — it stays present.
                         </p>
                       </div>
                     )}
                     {tab.id === 'how' && (
-                      <div className="space-y-4 text-base text-white leading-relaxed">
+                      <div className={`space-y-4 text-base leading-relaxed ${isDarkMode ? "text-white" : "text-gray-700"}`}>
                         <p>RADAR reads customer behavior inside your CRM and engages using simple, human-sounding messages at the moments when traditional follow-up disappears.</p>
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
@@ -289,13 +289,13 @@ export default function RadarPage() {
                             <span>Scales every month as more long-term customers accumulate</span>
                           </li>
                         </ul>
-                        <p className="font-semibold text-white text-lg pt-4">
+                        <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
                           The longer RADAR runs, the stronger it becomes.
                         </p>
                       </div>
                     )}
                     {tab.id === 'outcome' && (
-                      <div className="space-y-4 text-base text-white leading-relaxed">
+                      <div className={`space-y-4 text-base leading-relaxed ${isDarkMode ? "text-white" : "text-gray-700"}`}>
                         <p>RADAR re-engages customers who still intended to buy but were pushed into cold or lost status long before their buying cycle ended.</p>
                         <ul className="space-y-3 pt-4">
                           <li className="flex items-start">
@@ -319,7 +319,7 @@ export default function RadarPage() {
                             <span>Converts long-term silence into long-term opportunity</span>
                           </li>
                         </ul>
-                        <p className="font-semibold text-white text-lg pt-4">
+                        <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
                           RADAR turns abandoned revenue into recovered opportunity.
                         </p>
                       </div>
