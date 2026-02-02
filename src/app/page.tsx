@@ -172,7 +172,7 @@ export default function Home() {
             Get a free analysis of your current operations and discover hidden opportunities.
           </p>
           <a
-            href="mailto:contact@dealertransparency.com"
+            href="mailto:ward.matt@me.com"
             className="inline-block px-10 py-5 bg-electric-blue text-white text-lg font-semibold rounded-xl hover:bg-electric-blue/90 transition-all duration-300 hover:scale-105"
           >
             Request Free Analysis
