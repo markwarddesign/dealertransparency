@@ -132,7 +132,7 @@ export default function RadarPage() {
                   onClick={() => toggleAccordion(tab.id)}
                   className="w-full flex items-center justify-between p-6 text-left transition-colors"
                   style={{ 
-                    backgroundColor: openAccordion === tab.id ? '#123b60' : 'white'
+                    backgroundColor: openAccordion === tab.id ? '#10B981' : 'white'
                   }}
                 >
                   <span
@@ -320,7 +320,7 @@ export default function RadarPage() {
                         : 'bg-white hover:shadow-md'
                     }`}
                     style={{
-                      backgroundColor: activeTab === tab.id ? '#123b60' : undefined,
+                      backgroundColor: activeTab === tab.id ? '#10B981' : undefined,
                       color: activeTab === tab.id ? 'white' : '#123b60',
                     }}
                   >
