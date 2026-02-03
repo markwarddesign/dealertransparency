@@ -647,7 +647,7 @@ export default function RadarPage() {
       {/* FOOTER */}
       <footer className="px-6 py-12 border-t" style={{ backgroundColor: '#001a33', borderColor: '#003366' }}>
         <div className="max-w-7xl mx-auto text-center text-sm text-blue-200">
-          <div className="flex flex-col items-center justify-center gap-2 mb-4">
+          <div className="flex items-center justify-between gap-8 mb-4 max-w-6xl mx-auto w-full px-6">
             <div className="flex items-center gap-4">
               <p>© 2026 Dealer Transparency. All rights reserved.</p>
               <button
@@ -666,7 +666,14 @@ export default function RadarPage() {
                 )}
               </button>
             </div>
-            <p className="text-sm opacity-60 italic">RADAR™ system patent pending</p>
+            <div className="flex items-center">
+              <img 
+                src="/patent-pending.svg" 
+                alt="Patent Pending - RADAR System" 
+                className="h-32 w-auto"
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
+            </div>
           </div>
         </div>
       </footer>
