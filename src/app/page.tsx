@@ -143,32 +143,32 @@ export default function Home() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-20">
             <h2 className={`text-5xl lg:text-6xl font-bold mb-6 ${isDarkMode ? '' : 'bg-clip-text text-transparent bg-gradient-to-r from-electric-blue via-electric-blue to-electric-blue'}`}>Real Results</h2>
-            <p className={`text-xl ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>Measurable impact from actual dealer groups</p>
+            <p className={`text-xl ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>Measurable impact from actual dealer group</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="text-center group">
               <div className="text-6xl lg:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-electric-blue to-cyan-400 mb-4">
-                $11.7M
+                $5M
               </div>
-              <div className="text-xl font-bold mb-2">Sales Gross</div>
-              <div className="text-gray-500">PACE program, first 2 years</div>
+              <div className="text-xl font-bold mb-2">Annual Revenue</div>
+              <div className="text-gray-500">PACE per year</div>
             </div>
             
             <div className="text-center group">
               <div className="text-6xl lg:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-electric-blue to-cyan-400 mb-4">
-                82%
+                70%+
               </div>
               <div className="text-xl font-bold mb-2">Contact Rate</div>
-              <div className="text-gray-500">Internet leads, group-wide</div>
+              <div className="text-gray-500">Internet Leads</div>
             </div>
             
             <div className="text-center group">
               <div className="text-6xl lg:text-7xl font-black bg-clip-text text-transparent bg-gradient-to-r from-electric-blue to-cyan-400 mb-4">
-                $3M+
+                $3M
               </div>
-              <div className="text-xl font-bold mb-2">Annual Profit</div>
-              <div className="text-gray-500">RADAR, 200-900 day leads</div>
+              <div className="text-xl font-bold mb-2">Annual Revenue</div>
+              <div className="text-gray-500">RADAR per year</div>
             </div>
           </div>
         </div>
