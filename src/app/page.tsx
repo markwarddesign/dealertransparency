@@ -143,7 +143,7 @@ export default function Home() {
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-20">
             <h2 className={`text-5xl lg:text-6xl font-bold mb-6 ${isDarkMode ? '' : 'bg-clip-text text-transparent bg-gradient-to-r from-electric-blue via-electric-blue to-electric-blue'}`}>Real Results</h2>
-            <p className={`text-xl ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>Measurable impact from actual dealer group</p>
+            <p className={`text-xl ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>Measurable impact from actual dealer groups</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
