@@ -1,33 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dealer Transparency — RPM Platform
+
+A marketing and revenue performance platform built for automotive dealerships. The site showcases a suite of data-driven tools — **RADAR**, **PACE**, and **MILES** — designed to help dealer groups unlock hidden revenue, optimize lead follow-up, and improve the customer experience.
+
+## Live Site
+
+[dealertransparency.com](https://dealertransparency.com)
+
+---
+
+## Products
+
+| Product | Full Name | Status |
+|---------|-----------|--------|
+| **RADAR** | Retention & Advertising Drip | ✅ Live |
+| **PACE** | Premium Acquisition & Exchange | 🔜 Coming Soon |
+| **MILES** | Monthly Investment & Lifetime Savings | ✅ Live at [miles.dealertransparency.com](https://miles.dealertransparency.com) |
+
+### RADAR
+Automated CRM messaging that nurtures internet leads for months after initial contact — working 24/7 inside the dealership's existing CRM. Consistently achieves **70%+ contact rates** and generates an estimated **$3M in annual revenue** per dealer group.
+
+### PACE
+Turns service-lane customers into inventory acquisition opportunities — helping dealers source high-demand used vehicles before they hit the open market. Projected at **$5M in annual revenue** per dealer group.
+
+### MILES
+A transparent payment calculator that shows customers their true monthly investment and lifetime cost of ownership. Makes deals crystal clear and builds buyer confidence.
+
+---
+
+## Tech Stack
+
+- **Framework:** [Next.js 16](https://nextjs.org) (App Router, static export)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **React:** 19 with React Compiler
+- **Deployment:** GitHub Pages via `gh-pages`
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── page.tsx          # Main RPM landing page
+│   ├── layout.tsx        # Root layout
+│   ├── globals.css       # Global styles
+│   ├── components/
+│   │   ├── Header.tsx    # Sticky nav with dark/light mode
+│   │   ├── Footer.tsx
+│   │   └── Logo.tsx
+│   └── radar/
+│       └── page.tsx      # RADAR product detail page
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build & Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Production build (static export)
+npm run build
 
-## Learn More
+# Deploy to GitHub Pages
+npm run deploy
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Dark / Light mode** — auto-detected from OS preference, toggled in the footer
+- **Fully static export** — zero server dependency, hosted on GitHub Pages with a custom domain
+- **Responsive design** — mobile-first layout with animated hero, card grid, and accordion sections
+- **Accessible navigation** — keyboard-friendly mobile menu with ARIA attributes
 
 ## Deploy on Vercel
 
