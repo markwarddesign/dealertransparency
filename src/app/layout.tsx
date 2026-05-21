@@ -1,30 +1,35 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-// 1. Import the Inter font
-import { Inter } from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-// 2. Set up the font with the 'variable' optionn
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter", // This creates a CSS variable
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-plex-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Dealer Transparency",
-  description: "Blending 30 Years of Experience with Intelligent Automation",
+  title: "Dealer Transparency — Revenue Performance Management for Dealerships",
+  description:
+    "A suite of tools — RADAR, PACE, and MILES — that recover abandoned revenue, source inventory, and bring transparency to every deal.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      {/* 3. Apply the font variable and global styles */}
-      <body className={`${inter.variable} font-sans bg-white antialiased`}>
-        {/* Google Analytics */}
+    <html lang="en" className={`${inter.variable} ${plexMono.variable}`}>
+      <body>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-S69TX28RLT"
           strategy="afterInteractive"
@@ -37,7 +42,9 @@ export default function RootLayout({
             gtag('config', 'G-S69TX28RLT');
           `}
         </Script>
-        {children} {/* This is where your app/page.tsx will be rendered */}
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -1,682 +1,457 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+
+type TabId = 'problem' | 'why' | 'radar' | 'how' | 'outcome';
+
+const tabs: { id: TabId; label: string; heading: string; body: string; bullets: string[]; close?: string }[] = [
+  {
+    id: 'problem',
+    label: 'Why leads go silent',
+    heading: 'The problem no one sees',
+    body:
+      "Most customers don't go silent because they already purchased — they go silent because follow-up ends too early. Without a process change, most leads end up in cold or lost status within just 14–30 days. The CRM closes them long before many of these customers are actually out of the market.",
+    bullets: [
+      'Follow-up typically stops after just a few days of no response',
+      'CRM automation moves leads to cold or lost at preset inactivity thresholds',
+      'AI workflows end early because they focus on appointment-first engagement',
+      "Customers buy on their own timeline — not the dealership's",
+      'The cold/lost pool grows larger every single month',
+    ],
+  },
+  {
+    id: 'why',
+    label: 'Why follow-up breaks down',
+    heading: 'Why traditional follow-up fails',
+    body:
+      'Salespeople, AI tools, and CRM workflows handle the short term well. But none were designed for the long, slow, unpredictable buying cycle customers follow today. Salespeople and CRM systems often interpret silence as disinterest, causing leads to be closed too early.',
+    bullets: [
+      "Salespeople naturally prioritize today's buyers",
+      'AI tools focus on early engagement and quick appointment asks',
+      'Salespeople and CRM systems often close leads too early due to silence',
+      'Customers pause, research, and return weeks or months later',
+      'Each month, more good customers get swept into cold or lost status',
+    ],
+    close: "Traditional follow-up isn't built for long-term patience or timing-based re-engagement.",
+  },
+  {
+    id: 'radar',
+    label: 'Where RADAR takes over',
+    heading: 'Where RADAR takes over',
+    body:
+      'RADAR activates exactly where salespeople stop, where AI finishes, and where the CRM is about to close the opportunity. It fills the long-term gap no existing system covers.',
+    bullets: [
+      'Maintains friendly, low-pressure dialogue over time',
+      'Stays with customers until their timing aligns',
+      'Prevents leads from slipping into cold or lost prematurely',
+      'Intercepts customers before CRM automation closes them out',
+      'Converts a compounding cold/lost pool into a compounding pipeline of opportunity',
+    ],
+    close: "RADAR doesn't push — it stays present.",
+  },
+  {
+    id: 'how',
+    label: 'How RADAR actually works',
+    heading: 'How RADAR works behind the scenes',
+    body:
+      'RADAR reads customer behavior inside your CRM and engages using simple, human-sounding messages at the moments when traditional follow-up disappears.',
+    bullets: [
+      'Monitors timing signals',
+      'Uses silence as "not yet," not "no"',
+      'Detects inactivity before auto-close rules trigger',
+      'Sends natural check-ins rather than appointment pressure',
+      'Scales every month as more long-term customers accumulate',
+    ],
+    close: 'The longer RADAR runs, the stronger it becomes.',
+  },
+  {
+    id: 'outcome',
+    label: "The revenue you're losing",
+    heading: "The outcome: revenue that would've never happened",
+    body:
+      'RADAR re-engages customers who still intended to buy but were pushed into cold or lost status long before their buying cycle ended.',
+    bullets: [
+      'Reopens conversations with long-cycle buyers',
+      'Revives opportunities the CRM buried too early',
+      'Surfaces meaningful revenue that was previously unreachable',
+      'Builds a growing reservoir of warm customers over time',
+      'Converts long-term silence into long-term opportunity',
+    ],
+    close: 'RADAR turns abandoned revenue into recovered opportunity.',
+  },
+];
+
+function RadarArcs({ origin = 'bottom' }: { origin?: 'bottom' | 'top' }) {
+  const cy = origin === 'bottom' ? 850 : -50;
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 1200 800"
+      preserveAspectRatio="xMidYMid slice"
+      style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        opacity: 0.18,
+        pointerEvents: 'none',
+      }}
+    >
+      <defs>
+        <radialGradient id="rd" cx="50%" cy="50%">
+          <stop offset="0%" stopColor="var(--color-accent)" stopOpacity="1" />
+          <stop offset="50%" stopColor="var(--color-accent)" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="var(--color-accent)" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      {[700, 550, 400, 250].map((r, i) => (
+        <circle
+          key={r}
+          cx="600"
+          cy={cy}
+          r={r}
+          fill="none"
+          stroke="var(--color-accent)"
+          strokeWidth={3 - i * 0.5}
+          opacity={0.5 - i * 0.05}
+        />
+      ))}
+      <circle cx="600" cy={origin === 'bottom' ? 700 : 100} r="18" fill="url(#rd)" />
+      <circle cx="400" cy={origin === 'bottom' ? 600 : 200} r="14" fill="url(#rd)" opacity="0.8" />
+      <circle cx="800" cy={origin === 'bottom' ? 600 : 200} r="14" fill="url(#rd)" opacity="0.8" />
+      <circle cx="300" cy={origin === 'bottom' ? 450 : 350} r="12" fill="url(#rd)" opacity="0.7" />
+      <circle cx="900" cy={origin === 'bottom' ? 450 : 350} r="12" fill="url(#rd)" opacity="0.7" />
+    </svg>
+  );
+}
 
 export default function RadarPage() {
-  const currentYear = new Date().getFullYear();
-  const [activeTab, setActiveTab] = useState('problem');
-  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [active, setActive] = useState<TabId>('problem');
+  const [openAccordion, setOpenAccordion] = useState<TabId | null>('problem');
 
-  useEffect(() => {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setIsDarkMode(prefersDark);
-  }, []);
-
-  const tabs = [
-    { id: 'problem', label: 'Why Leads Go Silent' },
-    { id: 'why', label: 'Why Follow-Up Breaks Down' },
-    { id: 'radar', label: 'Where RADAR Takes Over' },
-    { id: 'how', label: 'How RADAR Actually Works' },
-    { id: 'outcome', label: 'The Revenue You\'re Losing' },
-  ];
-
-  const currentIndex = tabs.findIndex(tab => tab.id === activeTab);
-  
-  const goToNext = () => {
-    const nextIndex = (currentIndex + 1) % tabs.length;
-    setActiveTab(tabs[nextIndex].id);
-  };
-  
-  const goToPrev = () => {
-    const prevIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-    setActiveTab(tabs[prevIndex].id);
-  };
-
-  const toggleAccordion = (id: string, event?: React.MouseEvent<HTMLButtonElement>) => {
-    const isOpening = openAccordion !== id;
-    setOpenAccordion(openAccordion === id ? null : id);
-    
-    // Only scroll when opening an accordion
-    if (isOpening) {
-      // Wait for DOM to fully update before scrolling
-      setTimeout(() => {
-        const buttonElement = document.getElementById(`accordion-btn-${id}`);
-        if (buttonElement) {
-          const headerHeight = 72; // Height of sticky header
-          const elementPosition = buttonElement.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.scrollY - headerHeight - 8;
-          
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }, 300); // Longer delay to ensure DOM is fully updated
-    }
-  };
+  const current = tabs.find((t) => t.id === active)!;
 
   return (
-    <div className={`min-h-screen transition-colors ${isDarkMode ? 'bg-gray-900' : 'bg-white'}`}>
-      {/* HEADER */}
-      <header className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors ${
-        isDarkMode ? 'border-gray-700' : 'bg-white border-gray-200'
-      }`} style={{ backgroundColor: isDarkMode ? '#001a33' : 'white' }}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <img 
-              src={isDarkMode ? "/Radar_Logo_Reverse.svg" : "/Radar_Logo_Color.svg"} 
-              alt="RADAR" 
-              className="h-10" 
-            />
-          </div>
-          <a
-            href="mailto:ward.matt@me.com?subject=RADAR%20-%20quick%20conversation"
-            className="px-6 py-2.5 text-sm font-semibold rounded-full transition-all hover:scale-105 active:scale-95"
-            style={{ 
-              background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
-              color: 'white',
-              boxShadow: '0 4px 15px rgba(5, 100, 80, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+    <>
+      {/* ── HERO ─────────────────────────────────────── */}
+      <section
+        style={{
+          position: 'relative',
+          background: 'var(--color-paper-dark)',
+          color: '#fff',
+          padding: 'var(--space-24) var(--space-6) var(--space-24)',
+          overflow: 'hidden',
+        }}
+      >
+        <RadarArcs origin="bottom" />
+        <div style={{ maxWidth: '900px', margin: '0 auto', position: 'relative', textAlign: 'center' }}>
+          <span
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 'var(--text-xs)',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'var(--color-accent)',
+              display: 'inline-block',
+              marginBottom: 'var(--space-5)',
             }}
           >
-            Get started
-          </a>
-        </div>
-      </header>
-
-      {/* HERO */}
-      <section className="relative px-6 pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden" style={{ backgroundColor: '#123b60' }}>
-        {/* Large circular arcs with radar dots */}
-        <div className="absolute inset-0 pointer-events-none opacity-15">
-          <svg className="w-full h-full" viewBox="0 0 1200 800">
-            <defs>
-              <radialGradient id="radarDotHero" cx="50%" cy="50%">
-                <stop offset="0%" stopColor="#10B981" stopOpacity="1" />
-                <stop offset="50%" stopColor="#10B981" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            {/* Large concentric circular arcs - centered below to show top halves */}
-            <circle cx="600" cy="850" r="700" fill="none" stroke="#10B981" strokeWidth="3" opacity="0.5" />
-            <circle cx="600" cy="850" r="550" fill="none" stroke="#10B981" strokeWidth="2.5" opacity="0.4" />
-            <circle cx="600" cy="850" r="400" fill="none" stroke="#10B981" strokeWidth="2" opacity="0.35" />
-            <circle cx="600" cy="850" r="250" fill="none" stroke="#10B981" strokeWidth="1.5" opacity="0.3" />
-            {/* Radar dots - large pulsing */}
-            <circle cx="600" cy="700" r="20" fill="url(#radarDotHero)" />
-            <circle cx="400" cy="600" r="16" fill="url(#radarDotHero)" opacity="0.8" />
-            <circle cx="800" cy="600" r="16" fill="url(#radarDotHero)" opacity="0.8" />
-            <circle cx="300" cy="450" r="14" fill="url(#radarDotHero)" opacity="0.7" />
-            <circle cx="900" cy="450" r="14" fill="url(#radarDotHero)" opacity="0.7" />
-            <circle cx="500" cy="500" r="12" fill="url(#radarDotHero)" opacity="0.6" />
-            <circle cx="700" cy="500" r="12" fill="url(#radarDotHero)" opacity="0.6" />
-            {/* Smaller tracking dots */}
-            <circle cx="350" cy="350" r="6" fill="#10B981" opacity="0.9" />
-            <circle cx="600" cy="550" r="6" fill="#10B981" opacity="0.9" />
-            <circle cx="850" cy="350" r="6" fill="#10B981" opacity="0.9" />
-            <circle cx="550" cy="620" r="5" fill="#10B981" opacity="0.7" />
-            <circle cx="650" cy="620" r="5" fill="#10B981" opacity="0.7" />
-          </svg>
-        </div>
-        
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-white">
-            Behavioral engagement layer inside your CRM
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-blue-100 mb-6 max-w-3xl mx-auto leading-relaxed">
-            Quietly works mid and long-term customers who go silent—recovering abandoned revenue.
-          </p>
-          
-          <p className="text-lg md:text-xl text-blue-200 mb-12 max-w-2xl mx-auto">
-            Captures the growing pool of customers who fall into cold or lost status every month—turning long-term silence into long-term opportunity.
-          </p>
-          
-          <a
-            href="mailto:ward.matt@me.com?subject=RADAR%20-%20Let's%20Connect"
-            className="inline-block px-10 py-4 text-lg font-semibold rounded-full transition-all hover:scale-105 hover:shadow-2xl active:scale-95"
-            style={{ 
-              background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
-              color: 'white',
-              boxShadow: '0 10px 30px rgba(5, 100, 80, 0.7), inset 0 2px 0 rgba(255, 255, 255, 0.2)'
+            RADAR · Retention & Advertising Drip
+          </span>
+          <h1
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'var(--text-display)',
+              fontWeight: 600,
+              letterSpacing: '-0.025em',
+              lineHeight: 1.05,
+              margin: '0 0 var(--space-6)',
             }}
+          >
+            Behavioral engagement layer inside your CRM.
+          </h1>
+          <p style={{ fontSize: '1.25rem', lineHeight: 1.5, color: 'rgba(255,255,255,0.78)', margin: '0 auto var(--space-4)', maxWidth: '52ch' }}>
+            Quietly works mid- and long-term customers who go silent — recovering abandoned revenue.
+          </p>
+          <p style={{ fontSize: 'var(--text-body)', color: 'rgba(255,255,255,0.6)', margin: '0 auto var(--space-10)', maxWidth: '52ch' }}>
+            Captures the growing pool of customers who fall into cold or lost status every month — turning long-term silence into long-term opportunity.
+          </p>
+          <a
+            href="mailto:ward.matt@me.com?subject=RADAR%20-%20Let%27s%20Connect"
+            className="btn btn-primary"
           >
             Get started
           </a>
         </div>
       </section>
-      
-      {/* CONTENT SECTIONS WITH VERTICAL TABS */}
-      <section className={`relative px-6 py-16 md:py-32 overflow-hidden transition-colors ${
-        isDarkMode ? '' : 'bg-gray-200'
-      }`} style={{ backgroundColor: isDarkMode ? '#001a33' : undefined }}>
-        <div className="max-w-6xl mx-auto">
-          
-          {/* Mobile Accordion View */}
-          <div id="accordion-section" className="lg:hidden">
-            <div id="accordion-title" className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
-                The Silent Profit Leak
-              </h2>
-              <p className="text-xl md:text-2xl" style={{ color: isDarkMode ? '#10B981' : '#10B981' }}>
-                And How to Stop It
-              </p>
-            </div>
-            <div className="space-y-3">
-            {tabs.map((tab, index) => (
-              <div key={tab.id} className="rounded-2xl overflow-hidden transition-colors">
-                <button
-                  id={`accordion-btn-${tab.id}`}
-                  onClick={(e) => toggleAccordion(tab.id, e)}
-                  className="w-full flex items-center gap-4 p-6 text-left transition-colors"
-                  style={{ 
-                    backgroundColor: openAccordion === tab.id ? '#10B981' : (isDarkMode ? 'transparent' : 'white')
+
+      {/* ── WORKBENCH (desktop) / ACCORDION (mobile) ── */}
+      <section
+        style={{
+          padding: 'var(--space-20) var(--space-6)',
+          background: 'var(--color-paper-2)',
+        }}
+      >
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gap: 'var(--space-3)', marginBottom: 'var(--space-12)', maxWidth: '60ch' }}>
+            <span className="mono-label">The Silent Profit Leak</span>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'var(--text-h1)',
+                fontWeight: 600,
+                letterSpacing: '-0.02em',
+                color: 'var(--color-ink)',
+                margin: 0,
+              }}
+            >
+              And how to stop it.
+            </h2>
+          </div>
+
+          {/* mobile accordion */}
+          <div className="rd-mobile" style={{ display: 'grid', gap: 'var(--space-2)' }}>
+            {tabs.map((tab, i) => {
+              const isOpen = openAccordion === tab.id;
+              return (
+                <div
+                  key={tab.id}
+                  style={{
+                    border: 'var(--rule)',
+                    borderRadius: 'var(--radius-lg)',
+                    overflow: 'hidden',
+                    background: 'var(--color-paper)',
                   }}
                 >
-                  <span
-                    className="text-2xl font-bold flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full"
-                    style={{ 
-                      color: openAccordion === tab.id ? '#10B981' : '#10B981',
-                      backgroundColor: openAccordion === tab.id ? 'white' : (isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(16, 185, 129, 0.1)'),
-                      border: openAccordion === tab.id ? 'none' : (isDarkMode ? '2px solid rgba(255, 255, 255, 0.3)' : '2px solid rgba(16, 185, 129, 0.3)')
-                    }}
-                  >
-                    {index + 1}
-                  </span>
-                  <span
-                    className="text-xl font-semibold flex-1"
-                    style={{ color: openAccordion === tab.id ? 'white' : (isDarkMode ? 'white' : '#123b60') }}
-                  >
-                    {tab.label}
-                  </span>
-                  <span
-                    className="text-2xl font-light"
-                    style={{ color: openAccordion === tab.id ? 'white' : '#10B981' }}
-                  >
-                    {openAccordion === tab.id ? '−' : '+'}
-                  </span>
-                </button>
-                <div className={`overflow-hidden transition-all duration-300 ${openAccordion === tab.id ? 'max-h-[2000px]' : 'max-h-0'}`}>
-                  <div className="p-6 pl-16 bg-gradient-to-r from-green-500/10 to-transparent">
-                    {tab.id === 'problem' && (
-                      <div className={`space-y-4 text-base leading-relaxed ${isDarkMode ? 'text-white' : 'text-gray-700'}`}>
-                        <p>Most customers don't go silent because they already purchased — they go silent because follow-up ends too early. Without a process change, most leads end up in cold or lost status within just 14–30 days. The CRM closes them long before many of these customers are actually out of the market.</p>
-                        <ul className="space-y-3 pt-4">
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Follow-up typically stops after just a few days of no response</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>CRM automation moves leads to cold or lost at preset inactivity thresholds</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>AI workflows end early because they focus on appointment-first engagement</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Customers buy on their own timeline — not the dealership's</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>The cold/lost pool grows larger every single month</span>
-                          </li>
-                        </ul>
-                      </div>
-                    )}
-                    {tab.id === 'why' && (
-                      <div className={`space-y-4 text-base leading-relaxed ${isDarkMode ? "text-white" : "text-gray-700"}`}>
-                        <p>Salespeople, AI tools, and CRM workflows handle the short term well. But none were designed for the long, slow, unpredictable buying cycle customers follow today. Salespeople and CRM systems often interpret silence as disinterest, causing leads to be closed too early.</p>
-                        <ul className="space-y-3 pt-4">
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Salespeople naturally prioritize today's buyers</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>AI tools focus on early engagement and quick appointment asks</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Salespeople and CRM systems often close leads too early due to silence</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Customers pause, research, and return weeks or months later</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Each month, more good customers get swept into cold or lost status</span>
-                          </li>
-                        </ul>
-                        <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
-                          Traditional follow-up isn't built for long-term patience or timing-based re-engagement.
-                        </p>
-                      </div>
-                    )}
-                    {tab.id === 'radar' && (
-                      <div className={`space-y-4 text-base leading-relaxed ${isDarkMode ? "text-white" : "text-gray-700"}`}>
-                        <p>RADAR activates exactly where salespeople stop, where AI finishes, and where the CRM is about to close the opportunity. It fills the long-term gap no existing system covers.</p>
-                        <ul className="space-y-3 pt-4">
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Maintains friendly, low-pressure dialogue over time</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Stays with customers until their timing aligns</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Prevents leads from slipping into cold or lost prematurely</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Intercepts customers before CRM automation closes them out</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Converts a compounding cold/lost pool into a compounding pipeline of opportunity</span>
-                          </li>
-                        </ul>
-                        <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
-                          RADAR doesn't push — it stays present.
-                        </p>
-                      </div>
-                    )}
-                    {tab.id === 'how' && (
-                      <div className={`space-y-4 text-base leading-relaxed ${isDarkMode ? "text-white" : "text-gray-700"}`}>
-                        <p>RADAR reads customer behavior inside your CRM and engages using simple, human-sounding messages at the moments when traditional follow-up disappears.</p>
-                        <ul className="space-y-3 pt-4">
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Monitors timing signals</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Uses silence as "not yet," not "no"</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Detects inactivity before auto-close rules trigger</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Sends natural check-ins rather than appointment pressure</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Scales every month as more long-term customers accumulate</span>
-                          </li>
-                        </ul>
-                        <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
-                          The longer RADAR runs, the stronger it becomes.
-                        </p>
-                      </div>
-                    )}
-                    {tab.id === 'outcome' && (
-                      <div className={`space-y-4 text-base leading-relaxed ${isDarkMode ? "text-white" : "text-gray-700"}`}>
-                        <p>RADAR re-engages customers who still intended to buy but were pushed into cold or lost status long before their buying cycle ended.</p>
-                        <ul className="space-y-3 pt-4">
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Reopens conversations with long-cycle buyers</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Revives opportunities the CRM buried too early</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Surfaces meaningful revenue that was previously unreachable</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Builds a growing reservoir of warm customers over time</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="mr-3 text-xl" style={{ color: '#10B981' }}>•</span>
-                                                        <span style={{ color: isDarkMode ? "white" : "#123b60" }}>Converts long-term silence into long-term opportunity</span>
-                          </li>
-                        </ul>
-                        <p className="font-semibold text-lg pt-4" style={{ color: isDarkMode ? 'white' : '#123b60' }}>
-                          RADAR turns abandoned revenue into recovered opportunity.
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          </div>
-
-          {/* Desktop Tabs + Carousel View */}
-          <div className="hidden lg:block">
-            <div className="flex flex-col lg:flex-row gap-8 lg:items-start">
-            
-            {/* Vertical Tabs Navigation */}
-            <div className="lg:w-80 flex-shrink-0">
-              <div className="space-y-0 border-l-4 border-gray-200">
-                {tabs.map((tab) => (
                   <button
-                    key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`w-full text-left px-6 py-4 transition-all font-semibold text-lg border-l-4 -ml-1 ${
-                      activeTab === tab.id
-                        ? ''
-                        : 'hover:border-gray-300'
-                    }`}
+                    onClick={() => setOpenAccordion(isOpen ? null : tab.id)}
                     style={{
-                      borderLeftColor: activeTab === tab.id ? '#10B981' : 'transparent',
-                      color: activeTab === tab.id ? '#10B981' : (isDarkMode ? 'white' : '#123b60'),
+                      width: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--space-3)',
+                      padding: 'var(--space-4) var(--space-5)',
+                      background: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      color: 'var(--color-ink)',
+                    }}
+                    aria-expanded={isOpen}
+                  >
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: 'var(--text-sm)',
+                        color: 'var(--color-accent-deep)',
+                        minWidth: '2ch',
+                      }}
+                    >
+                      0{i + 1}
+                    </span>
+                    <span style={{ flex: 1, fontSize: 'var(--text-body)', fontWeight: 600 }}>{tab.label}</span>
+                    <span style={{ color: 'var(--color-accent)', fontSize: '1.25rem', lineHeight: 1 }}>
+                      {isOpen ? '−' : '+'}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div
+                      style={{
+                        padding: '0 var(--space-5) var(--space-6) calc(var(--space-5) + 3ch)',
+                        borderTop: 'var(--rule)',
+                        background: 'var(--color-paper-2)',
+                      }}
+                    >
+                      <p style={{ marginTop: 'var(--space-5)', color: 'var(--color-muted)' }}>{tab.body}</p>
+                      <ul style={{ listStyle: 'none', padding: 0, margin: 'var(--space-4) 0 0', display: 'grid', gap: 'var(--space-2)' }}>
+                        {tab.bullets.map((b) => (
+                          <li key={b} style={{ display: 'flex', gap: 'var(--space-3)', color: 'var(--color-ink-2)' }}>
+                            <span style={{ color: 'var(--color-accent)', flexShrink: 0 }}>—</span>
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      {tab.close && (
+                        <p
+                          style={{
+                            marginTop: 'var(--space-5)',
+                            fontWeight: 600,
+                            color: 'var(--color-ink)',
+                          }}
+                        >
+                          {tab.close}
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* desktop workbench */}
+          <div className="rd-desktop" style={{ display: 'none' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: 'var(--space-12)', alignItems: 'start' }}>
+              <nav role="tablist" aria-label="RADAR overview" style={{ display: 'grid', borderLeft: '2px solid var(--color-rule)' }}>
+                {tabs.map((tab, i) => {
+                  const isActive = active === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setActive(tab.id)}
+                      style={{
+                        textAlign: 'left',
+                        padding: 'var(--space-4) var(--space-5)',
+                        marginLeft: '-2px',
+                        borderLeft: isActive ? '2px solid var(--color-accent)' : '2px solid transparent',
+                        background: 'transparent',
+                        color: isActive ? 'var(--color-ink)' : 'var(--color-muted)',
+                        fontSize: 'var(--text-body)',
+                        fontWeight: isActive ? 600 : 500,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        gap: 'var(--space-3)',
+                        alignItems: 'baseline',
+                        transition: 'color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out)',
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: 'var(--font-mono)',
+                          fontSize: 'var(--text-xs)',
+                          color: isActive ? 'var(--color-accent-deep)' : 'var(--color-muted-2)',
+                        }}
+                      >
+                        0{i + 1}
+                      </span>
+                      <span>{tab.label}</span>
+                    </button>
+                  );
+                })}
+              </nav>
+
+              <article
+                style={{
+                  background: 'var(--color-paper)',
+                  border: 'var(--rule)',
+                  borderRadius: 'var(--radius-lg)',
+                  padding: 'var(--space-12)',
+                }}
+              >
+                <h3
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'var(--text-h2)',
+                    fontWeight: 600,
+                    letterSpacing: '-0.02em',
+                    color: 'var(--color-ink)',
+                    margin: '0 0 var(--space-5)',
+                  }}
+                >
+                  {current.heading}
+                </h3>
+                <p style={{ fontSize: '1.0625rem', lineHeight: 1.65, color: 'var(--color-muted)', margin: 0 }}>
+                  {current.body}
+                </p>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 'var(--space-6) 0 0', display: 'grid', gap: 'var(--space-3)' }}>
+                  {current.bullets.map((b) => (
+                    <li
+                      key={b}
+                      style={{
+                        display: 'flex',
+                        gap: 'var(--space-4)',
+                        color: 'var(--color-ink-2)',
+                        fontSize: 'var(--text-body)',
+                        paddingTop: 'var(--space-3)',
+                        borderTop: 'var(--rule)',
+                      }}
+                    >
+                      <span style={{ color: 'var(--color-accent)', flexShrink: 0, fontFamily: 'var(--font-mono)' }}>—</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+                {current.close && (
+                  <p
+                    style={{
+                      marginTop: 'var(--space-8)',
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.25rem',
+                      fontWeight: 600,
+                      color: 'var(--color-ink)',
+                      letterSpacing: '-0.015em',
                     }}
                   >
-                    {tab.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Content Panel */}
-            <div className="flex-1">
-              
-              {/* THE PROBLEM NO ONE SEES */}
-              {activeTab === 'problem' && (
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border-l-4 animate-fadeIn" style={{ borderLeftColor: '#10B981' }}>
-                  <h3 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: '#123b60' }}>
-                    The Problem No One Sees
-                  </h3>
-                  <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
-                    <p>Most customers don't go silent because they already purchased — they go silent because follow-up ends too early. Without a process change, most leads end up in cold or lost status within just 14–30 days. The CRM closes them long before many of these customers are actually out of the market.</p>
-                    <ul className="space-y-3 pt-4">
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Follow-up typically stops after just a few days of no response</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>CRM automation moves leads to cold or lost at preset inactivity thresholds</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>AI workflows end early because they focus on appointment-first engagement</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Customers buy on their own timeline — not the dealership's</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>The cold/lost pool grows larger every single month</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              )}
-
-              {/* WHY TRADITIONAL FOLLOW-UP FAILS */}
-              {activeTab === 'why' && (
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border-l-4 animate-fadeIn" style={{ borderLeftColor: '#10B981' }}>
-                  <h3 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: '#123b60' }}>
-                    Why Traditional Follow-Up Fails
-                  </h3>
-                  <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
-                    <p>
-                      Salespeople, AI tools, and CRM workflows handle the short term well. But none were designed for the long, slow, unpredictable buying cycle customers follow today. Salespeople and CRM systems often interpret silence as disinterest, causing leads to be closed too early.
-                    </p>
-                    <ul className="space-y-3 pt-4">
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Salespeople naturally prioritize today's buyers</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>AI tools focus on early engagement and quick appointment asks</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Salespeople and CRM systems often close leads too early due to silence</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Customers pause, research, and return weeks or months later</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Each month, more good customers get swept into cold or lost status</span>
-                      </li>
-                    </ul>
-                    <p className="font-semibold text-gray-900 text-2xl pt-4">
-                      Traditional follow-up isn't built for long-term patience or timing-based re-engagement.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {/* WHERE RADAR TAKES OVER */}
-              {activeTab === 'radar' && (
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border-l-4 animate-fadeIn" style={{ borderLeftColor: '#10B981' }}>
-                  <h3 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: '#123b60' }}>
-                    Where RADAR Takes Over
-                  </h3>
-                  <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
-                    <p>
-                      RADAR activates exactly where salespeople stop, where AI finishes, and where the CRM is about to close the opportunity. It fills the long-term gap no existing system covers.
-                    </p>
-                    <ul className="space-y-3 pt-4">
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Maintains friendly, low-pressure dialogue over time</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Stays with customers until their timing aligns</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Prevents leads from slipping into cold or lost prematurely</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Intercepts customers before CRM automation closes them out</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Converts a compounding cold/lost pool into a compounding pipeline of opportunity</span>
-                      </li>
-                    </ul>
-                    <p className="font-semibold text-gray-900 text-2xl pt-4">
-                      RADAR doesn't push — it stays present.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {/* HOW RADAR WORKS BEHIND THE SCENES */}
-              {activeTab === 'how' && (
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border-l-4 animate-fadeIn" style={{ borderLeftColor: '#10B981' }}>
-                  <h3 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: '#123b60' }}>
-                    How RADAR Works Behind the Scenes
-                  </h3>
-                  <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
-                    <p>
-                      RADAR reads customer behavior inside your CRM and engages using simple, human-sounding messages at the moments when traditional follow-up disappears.
-                    </p>
-                    <ul className="space-y-3 pt-4">
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Monitors timing signals</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Uses silence as "not yet," not "no"</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Detects inactivity before auto-close rules trigger</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Sends natural check-ins rather than appointment pressure</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Scales every month as more long-term customers accumulate</span>
-                      </li>
-                    </ul>
-                    <p className="font-semibold text-gray-900 text-2xl pt-4">
-                      The longer RADAR runs, the stronger it becomes.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {/* THE OUTCOME */}
-              {activeTab === 'outcome' && (
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-lg border-l-4 animate-fadeIn" style={{ borderLeftColor: '#10B981' }}>
-                  <h3 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: '#123b60' }}>
-                    The Outcome: Revenue That Would've Never Happened
-                  </h3>
-                  <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
-                    <p>
-                      RADAR re-engages customers who still intended to buy but were pushed into cold or lost status long before their buying cycle ended.
-                    </p>
-                    <ul className="space-y-3 pt-4">
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Reopens conversations with long-cycle buyers</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Revives opportunities the CRM buried too early</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Surfaces meaningful revenue that was previously unreachable</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Builds a growing reservoir of warm customers over time</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="mr-3 text-2xl" style={{ color: '#10B981' }}>•</span>
-                                                    <span style={{ color: "#123b60" }}>Converts long-term silence into long-term opportunity</span>
-                      </li>
-                    </ul>
-                    <p className="font-semibold text-gray-900 text-2xl pt-4">
-                      RADAR turns abandoned revenue into recovered opportunity.
-                    </p>
-                  </div>
-                </div>
-              )}
-
+                    {current.close}
+                  </p>
+                )}
+              </article>
             </div>
           </div>
-        </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative px-6 py-24 overflow-hidden" style={{ backgroundColor: '#123b60' }}>
-        {/* Large circular arcs with radar dots */}
-        <div className="absolute inset-0 pointer-events-none opacity-[0.18]">
-          <svg className="w-full h-full" viewBox="0 0 1200 600">
-            <defs>
-              <radialGradient id="radarDot" cx="50%" cy="50%">
-                <stop offset="0%" stopColor="#10B981" stopOpacity="1" />
-                <stop offset="50%" stopColor="#10B981" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
-              </radialGradient>
-            </defs>
-            {/* Large concentric circular arcs */}
-            <circle cx="600" cy="-50" r="700" fill="none" stroke="#10B981" strokeWidth="3" opacity="0.5" />
-            <circle cx="600" cy="-50" r="550" fill="none" stroke="#10B981" strokeWidth="2.5" opacity="0.4" />
-            <circle cx="600" cy="-50" r="400" fill="none" stroke="#10B981" strokeWidth="2" opacity="0.35" />
-            <circle cx="600" cy="-50" r="250" fill="none" stroke="#10B981" strokeWidth="1.5" opacity="0.3" />
-            {/* Radar dots - large pulsing */}
-            <circle cx="600" cy="100" r="20" fill="url(#radarDot)" />
-            <circle cx="400" cy="200" r="16" fill="url(#radarDot)" opacity="0.8" />
-            <circle cx="800" cy="200" r="16" fill="url(#radarDot)" opacity="0.8" />
-            <circle cx="300" cy="350" r="14" fill="url(#radarDot)" opacity="0.7" />
-            <circle cx="900" cy="350" r="14" fill="url(#radarDot)" opacity="0.7" />
-            <circle cx="500" cy="300" r="12" fill="url(#radarDot)" opacity="0.6" />
-            <circle cx="700" cy="300" r="12" fill="url(#radarDot)" opacity="0.6" />
-            {/* Smaller tracking dots */}
-            <circle cx="350" cy="450" r="6" fill="#10B981" opacity="0.9" />
-            <circle cx="600" cy="250" r="6" fill="#10B981" opacity="0.9" />
-            <circle cx="850" cy="450" r="6" fill="#10B981" opacity="0.9" />
-            <circle cx="550" cy="180" r="5" fill="#10B981" opacity="0.7" />
-            <circle cx="650" cy="180" r="5" fill="#10B981" opacity="0.7" />
-          </svg>
-        </div>
-        
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <img src="/Radar_Logo_Reverse.svg" alt="RADAR" className="h-12 mx-auto mb-8" />
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Get started with RADAR
-          </h2>
-          
-          <p className="text-xl text-blue-100 mb-12">
-            If you are tired of wasting money converting a painfully low percentage of opportunities, get on the RADAR!
-          </p>
-          
-          <a
-            href="mailto:ward.matt@me.com?subject=RADAR%20-%20quick%20conversation"
-            className="inline-block px-10 py-4 text-lg font-semibold rounded-full transition-all hover:scale-105 hover:shadow-2xl active:scale-95 mb-8"
-            style={{ 
-              background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
-              color: 'white',
-              boxShadow: '0 10px 30px rgba(5, 100, 80, 0.7), inset 0 2px 0 rgba(255, 255, 255, 0.2)'
+      {/* ── CTA ─────────────────────────────────────── */}
+      <section
+        style={{
+          position: 'relative',
+          background: 'var(--color-paper-dark)',
+          color: '#fff',
+          padding: 'var(--space-24) var(--space-6)',
+          overflow: 'hidden',
+        }}
+      >
+        <RadarArcs origin="top" />
+        <div style={{ maxWidth: '760px', margin: '0 auto', position: 'relative', textAlign: 'center' }}>
+          <span
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 'var(--text-xs)',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'var(--color-accent)',
+              display: 'inline-block',
+              marginBottom: 'var(--space-5)',
             }}
           >
-            Contact us
-          </a>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-blue-200">
-            <a href="tel:425-985-8227" className="hover:text-white transition-colors">
-              425-985-8227
+            Get on the RADAR
+          </span>
+          <h2
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'var(--text-h1)',
+              fontWeight: 600,
+              letterSpacing: '-0.025em',
+              margin: '0 0 var(--space-5)',
+            }}
+          >
+            Get started with RADAR.
+          </h2>
+          <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: 'var(--text-body)', maxWidth: '52ch', margin: '0 auto var(--space-10)' }}>
+            If you&rsquo;re tired of converting a painfully low percentage of opportunities, let&rsquo;s talk.
+          </p>
+          <div style={{ display: 'flex', gap: 'var(--space-3)', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a
+              href="mailto:ward.matt@me.com?subject=RADAR%20-%20quick%20conversation"
+              className="btn btn-primary"
+            >
+              Contact us
             </a>
-            <a href="mailto:ward.matt@me.com" className="hover:text-white transition-colors">
-              ward.matt@me.com
+            <a href="tel:425-985-8227" className="btn btn-ghost-inverse">
+              425-985-8227
             </a>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="px-6 py-12 border-t" style={{ backgroundColor: '#001a33', borderColor: '#003366' }}>
-        <div className="max-w-7xl mx-auto text-center text-sm text-blue-200">
-          <div className="flex items-center justify-between gap-8 mb-4 max-w-6xl mx-auto w-full px-6">
-            <div className="flex items-center gap-4">
-              <p>© 2026 Dealer Transparency. All rights reserved.</p>
-              <button
-                onClick={() => setIsDarkMode(!isDarkMode)}
-                className="p-2 rounded-lg hover:bg-white/10 transition-colors opacity-50 hover:opacity-100"
-                aria-label="Toggle dark mode"
-              >
-                {isDarkMode ? (
-                  <svg className="w-5 h-5 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                  </svg>
-                )}
-              </button>
-            </div>
-            <div className="flex items-center">
-              <img 
-                src="/patent-pending.svg" 
-                alt="Patent Pending - RADAR System" 
-                className="h-32 w-auto"
-                style={{ filter: 'brightness(0) invert(1)' }}
-              />
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <style>{`
+        @media (min-width: 960px) {
+          .rd-mobile { display: none !important; }
+          .rd-desktop { display: block !important; }
+        }
+      `}</style>
+    </>
   );
 }

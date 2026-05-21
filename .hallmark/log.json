@@ -1,0 +1,20 @@
+[
+  {
+    "date": "2026-05-21",
+    "macrostructure": "Workbench",
+    "theme": "custom",
+    "theme_axes": "dark / geometric-sans / chromatic-green",
+    "vibe": "navy paper · emerald accent · utilitarian B2B",
+    "enrichment": "E5 hand-built SVG (radar arcs)",
+    "brief": "/radar — RADAR product page, modern-minimal genre"
+  },
+  {
+    "date": "2026-05-21",
+    "macrostructure": "Marquee Hero",
+    "theme": "custom",
+    "theme_axes": "light / geometric-sans / chromatic-green",
+    "vibe": "navy ink · emerald accent · utilitarian B2B",
+    "enrichment": "none",
+    "brief": "/ — Dealer Transparency suite hub (RPM, RADAR, PACE, MILES)"
+  }
+]
