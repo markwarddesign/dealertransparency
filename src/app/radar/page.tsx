@@ -162,9 +162,9 @@ export default function RadarPage() {
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-display)',
-              fontWeight: 600,
-              letterSpacing: '-0.025em',
-              lineHeight: 1.05,
+              fontWeight: 700,
+              letterSpacing: '-0.035em',
+              lineHeight: 1.02,
               margin: '0 0 var(--space-6)',
             }}
           >
@@ -194,15 +194,30 @@ export default function RadarPage() {
       >
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <div style={{ display: 'grid', gap: 'var(--space-3)', marginBottom: 'var(--space-12)', maxWidth: '60ch' }}>
-            <span className="mono-label">The Silent Profit Leak</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+              <span
+                style={{
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 'var(--text-xs)',
+                  letterSpacing: '0.16em',
+                  color: 'var(--color-accent-deep)',
+                  fontWeight: 600,
+                }}
+              >
+                01
+              </span>
+              <span style={{ width: '24px', height: '1px', background: 'var(--color-rule)' }} />
+              <span className="mono-label">The Silent Profit Leak</span>
+            </div>
             <h2
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 'var(--text-h1)',
-                fontWeight: 600,
-                letterSpacing: '-0.02em',
+                fontWeight: 700,
+                letterSpacing: '-0.03em',
                 color: 'var(--color-ink)',
                 margin: 0,
+                lineHeight: 1.05,
               }}
             >
               And how to stop it.
@@ -422,8 +437,9 @@ export default function RadarPage() {
             style={{
               fontFamily: 'var(--font-display)',
               fontSize: 'var(--text-h1)',
-              fontWeight: 600,
-              letterSpacing: '-0.025em',
+              fontWeight: 700,
+              letterSpacing: '-0.035em',
+              lineHeight: 1.05,
               margin: '0 0 var(--space-5)',
             }}
           >
